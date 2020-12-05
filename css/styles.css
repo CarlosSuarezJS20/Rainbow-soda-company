@@ -44,8 +44,6 @@ html {
 	font-size: 0.875rem;
 	width: 100%;
 	height: 100%;
-	margin: 0px;
-	padding: 0px;
 	overflow-x: hidden;
 }
 ul {
@@ -60,8 +58,6 @@ img {
 	display: block;
 	margin: auto;
 }
-
-/*  global classes */
 
 .section-center {
 	width: 100vw;
@@ -162,7 +158,7 @@ SIDE MENU
 	outline: 0;
 }
 
-.drawer-toggle:hover {
+.drawer-menu-close:hover {
 	transform: scale(1.2);
 }
 
@@ -262,7 +258,7 @@ CART DRAWER
 
 .cart-items-list {
 	overflow-y: scroll;
-	height: 200px;
+	height: 400px;
 	margin: auto;
 }
 
@@ -322,13 +318,25 @@ span {
 
 .total-display-side-cart {
 	text-transform: uppercase;
-	margin: 1rem 0;
+	margin: 5rem 0;
 	font-size: 1.5rem;
 }
 
 .checkout-drawer {
 	width: 100%;
+	font-size: 2.5rem;
+	text-transform: uppercase;
+	color: var(--clr-white);
 	background: var(--clr-primary-1);
+	padding: 30px 0;
+	text-align: center;
+	transition: var(--transition);
+	outline: 0;
+}
+
+.checkout-drawer:hover {
+	width: 100%;
+	background: var(--clr-primary-3);
 	padding: 30px 0;
 	text-align: center;
 }
@@ -350,6 +358,10 @@ span {
 
 .cart-open {
 	transform: translateX(0);
+}
+
+.cart-footer {
+	margin-top: 10rem;
 }
 
 @media screen and (min-width: 500px) {
@@ -384,13 +396,13 @@ Main Banner
 }
 
 .banner-text h1 {
-	font-size: 3rem;
+	font-size: 4rem;
+	padding: 10px 0;
 	background-color: rgba(255, 255, 255, 0.5);
 	font-weight: 400;
 	text-transform: uppercase;
 	line-height: 0.8em;
 	margin-top: 10rem;
-	margin-left: 1rem;
 }
 
 /* 
@@ -411,6 +423,17 @@ SHOP ALL SECTION
 .collections a:hover {
 	color: rgba(83, 83, 83, 0.5);
 	transition: var(--transition);
+}
+
+@media screen and (min-width: 768px) {
+	.banner-text h1 {
+		font-size: 5rem;
+	}
+}
+@media screen and (min-width: 1170px) {
+	.banner-text h1 {
+		font-size: 7rem;
+	}
 }
 
 /* 
