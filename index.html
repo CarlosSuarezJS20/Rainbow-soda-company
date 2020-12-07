@@ -21,14 +21,47 @@
 		<!-- Script -->
 		<script src="./js/app.js" defer></script>
 	</head>
+
 	<body>
+		<template id="item-main-template">
+			<article class="single-product">
+				<div class="product-image-container">
+					<img class="tour-img" src="" alt="" />
+				</div>
+				<div class="product-title">
+					<h2></h2>
+				</div>
+				<div class="cart-btn-holder">
+					<button class="add-to-cart-btn" id="add-to-cart">add to cart</button>
+				</div>
+			</article>
+		</template>
+		<template id="item-cart-template">
+			<article class="cart-item">
+				<div class="side-cart-product-item">
+					<h3></h3>
+					<button class="trash-icon">
+						<i class="far fa-trash-alt"></i>
+					</button>
+				</div>
+				<div class="side-cart-product-price">
+					<p></p>
+					<div class="cart-qty">
+						<button class="qty-btn">-</button>
+						<span></span>
+						<button class="qty-btn">+</button>
+					</div>
+				</div>
+			</article>
+		</template>
+
 		<header id="home">
 			<nav>
 				<button type="button" class="nav-toggle" id="nav-toggle">
 					<i class="fas fa-bars"></i>
 				</button>
 				<h1 class="header-title">RAINBOW SODAS UK</h1>
-				<button type="button" class="nav-toggle" id="cart-drawer-toggle">
+				<button type="button" class="nav-toggle" id="cart-drawer-open">
 					<i class="fas fa-shopping-cart"
 						><span class="cart-items-counter">0</span></i
 					>
@@ -53,7 +86,7 @@
 					</li>
 				</ul>
 			</div>
-			<div class="cart-drawer" id="cart-drawer">
+			<div class="cart-drawer" id="side-cart">
 				<div class="cart-inner">
 					<button
 						type="button"
@@ -63,141 +96,12 @@
 						<i class="far fa-window-close"></i>
 					</button>
 					<div class="cart-drawer-title">CART</div>
-					<section class="cart-items-list">
-						<article class="cart-item">
-							<div class="side-cart-product-item">
-								<h3>product 1</h3>
-								<button class="trash-icon">
-									<i class="far fa-trash-alt"></i>
-								</button>
-							</div>
-							<div class="side-cart-product-price">
-								<p>$40</p>
-								<div class="cart-qty">
-									<button class="qty-btn">-</button>
-									<span>0</span>
-									<button class="qty-btn">+</button>
-								</div>
-							</div>
-						</article>
-						<article class="cart-item">
-							<div class="side-cart-product-item">
-								<h3>product 1</h3>
-								<button class="trash-icon">
-									<i class="far fa-trash-alt"></i>
-								</button>
-							</div>
-							<div class="side-cart-product-price">
-								<p>$40</p>
-								<div class="cart-qty">
-									<button class="qty-btn">-</button>
-									<span>0</span>
-									<button class="qty-btn">+</button>
-								</div>
-							</div>
-						</article>
-						<article class="cart-item">
-							<div class="side-cart-product-item">
-								<h3>product 1</h3>
-								<button class="trash-icon">
-									<i class="far fa-trash-alt"></i>
-								</button>
-							</div>
-							<div class="side-cart-product-price">
-								<p>$40</p>
-								<div class="cart-qty">
-									<button class="qty-btn">-</button>
-									<span>0</span>
-									<button class="qty-btn">+</button>
-								</div>
-							</div>
-						</article>
-						<article class="cart-item">
-							<div class="side-cart-product-item">
-								<h3>product 1</h3>
-								<button class="trash-icon">
-									<i class="far fa-trash-alt"></i>
-								</button>
-							</div>
-							<div class="side-cart-product-price">
-								<p>$40</p>
-								<div class="cart-qty">
-									<button class="qty-btn">-</button>
-									<span>0</span>
-									<button class="qty-btn">+</button>
-								</div>
-							</div>
-						</article>
-						<article class="cart-item">
-							<div class="side-cart-product-item">
-								<h3>product 1</h3>
-								<button class="trash-icon">
-									<i class="far fa-trash-alt"></i>
-								</button>
-							</div>
-							<div class="side-cart-product-price">
-								<p>$40</p>
-								<div class="cart-qty">
-									<button class="qty-btn">-</button>
-									<span>0</span>
-									<button class="qty-btn">+</button>
-								</div>
-							</div>
-						</article>
-						<article class="cart-item">
-							<div class="side-cart-product-item">
-								<h3>product 1</h3>
-								<button class="trash-icon">
-									<i class="far fa-trash-alt"></i>
-								</button>
-							</div>
-							<div class="side-cart-product-price">
-								<p>$40</p>
-								<div class="cart-qty">
-									<button class="qty-btn">-</button>
-									<span>0</span>
-									<button class="qty-btn">+</button>
-								</div>
-							</div>
-						</article>
-						<article class="cart-item">
-							<div class="side-cart-product-item">
-								<h3>product 1</h3>
-								<button class="trash-icon">
-									<i class="far fa-trash-alt"></i>
-								</button>
-							</div>
-							<div class="side-cart-product-price">
-								<p>$40</p>
-								<div class="cart-qty">
-									<button class="qty-btn">-</button>
-									<span>0</span>
-									<button class="qty-btn">+</button>
-								</div>
-							</div>
-						</article>
-						<article class="cart-item">
-							<div class="side-cart-product-item">
-								<h3>product 1</h3>
-								<button class="trash-icon">
-									<i class="far fa-trash-alt"></i>
-								</button>
-							</div>
-							<div class="side-cart-product-price">
-								<p>$40</p>
-								<div class="cart-qty">
-									<button class="qty-btn">-</button>
-									<span>0</span>
-									<button class="qty-btn">+</button>
-								</div>
-							</div>
-						</article>
-					</section>
+					<section class="cart-items-list" id="cart-items-list"></section>
 				</div>
 				<div class="cart-footer">
 					<div class="total-display-side-cart">
 						<h3>total</h3>
-						<span>$120</span>
+						<span>0</span>
 					</div>
 					<button class="checkout-drawer">checkout</button>
 				</div>
@@ -251,175 +155,7 @@
 					<button class="filter-btn" type="button" value="Berry">sour</button>
 				</div>
 			</section>
-			<section class="products-holder" id="products-holder">
-				<article class="single-product">
-					<div class="product-image-container">
-						<img src="images/Cherry_Pop_Still_4K_Front-CherryPop.png" alt="" />
-					</div>
-					<div class="product-title">
-						<h2>CHERRY POP</h2>
-					</div>
-					<div class="cart-btn-holder">
-						<button class="add-to-cart-btn" id="add-to-cart">
-							add to cart
-						</button>
-					</div>
-				</article>
-				<article class="single-product">
-					<div class="product-image-container">
-						<img
-							class="tour-img"
-							src="images/Cherry_Pop_Still_4K_Front-CherryPop.png"
-							alt=""
-						/>
-					</div>
-					<div class="product-title">
-						<h2>CHERRY POP</h2>
-					</div>
-					<div class="cart-btn-holder">
-						<button class="add-to-cart-btn" id="add-to-cart">
-							add to cart
-						</button>
-					</div>
-				</article>
-				<article class="single-product">
-					<div class="product-image-container">
-						<img
-							class="tour-img"
-							src="images/Cherry_Pop_Still_4K_Front-CherryPop.png"
-							alt=""
-						/>
-					</div>
-					<div class="product-title">
-						<h2>CHERRY POP</h2>
-					</div>
-					<div class="cart-btn-holder">
-						<button class="add-to-cart-btn" id="add-to-cart">
-							add to cart
-						</button>
-					</div>
-				</article>
-				<article class="single-product">
-					<div class="product-image-container">
-						<img
-							class="tour-img"
-							src="images/Cherry_Pop_Still_4K_Front-CherryPop.png"
-							alt=""
-						/>
-					</div>
-					<div class="product-title">
-						<h2>CHERRY POP</h2>
-					</div>
-					<div class="cart-btn-holder">
-						<button class="add-to-cart-btn" id="add-to-cart">
-							add to cart
-						</button>
-					</div>
-				</article>
-
-				<article class="single-product">
-					<div class="product-image-container">
-						<img
-							class="tour-img"
-							src="images/Cherry_Pop_Still_4K_Front-CherryPop.png"
-							alt=""
-						/>
-					</div>
-					<div class="product-title">
-						<h2>CHERRY POP</h2>
-					</div>
-					<div class="cart-btn-holder">
-						<button class="add-to-cart-btn" id="add-to-cart">
-							add to cart
-						</button>
-					</div>
-				</article>
-				<article class="single-product">
-					<div class="product-image-container">
-						<img
-							class="tour-img"
-							src="images/Cherry_Pop_Still_4K_Front-CherryPop.png"
-							alt=""
-						/>
-					</div>
-					<div class="product-title">
-						<h2>CHERRY POP</h2>
-					</div>
-					<div class="cart-btn-holder">
-						<button class="add-to-cart-btn" id="add-to-cart">
-							add to cart
-						</button>
-					</div>
-				</article>
-				<article class="single-product">
-					<div class="product-image-container">
-						<img
-							class="tour-img"
-							src="images/Cherry_Pop_Still_4K_Front-CherryPop.png"
-							alt=""
-						/>
-					</div>
-					<div class="product-title">
-						<h2>CHERRY POP</h2>
-					</div>
-					<div class="cart-btn-holder">
-						<button class="add-to-cart-btn" id="add-to-cart">
-							add to cart
-						</button>
-					</div>
-				</article>
-				<article class="single-product">
-					<div class="product-image-container">
-						<img
-							class="tour-img"
-							src="images/Cherry_Pop_Still_4K_Front-CherryPop.png"
-							alt=""
-						/>
-					</div>
-					<div class="product-title">
-						<h2>CHERRY POP</h2>
-					</div>
-					<div class="cart-btn-holder">
-						<button class="add-to-cart-btn" id="add-to-cart">
-							add to cart
-						</button>
-					</div>
-				</article>
-				<article class="single-product">
-					<div class="product-image-container">
-						<img
-							class="tour-img"
-							src="images/Cherry_Pop_Still_4K_Front-CherryPop.png"
-							alt=""
-						/>
-					</div>
-					<div class="product-title">
-						<h2>CHERRY POP</h2>
-					</div>
-					<div class="cart-btn-holder">
-						<button class="add-to-cart-btn" id="add-to-cart">
-							add to cart
-						</button>
-					</div>
-				</article>
-				<article class="single-product">
-					<div class="product-image-container">
-						<img
-							class="tour-img"
-							src="images/Cherry_Pop_Still_4K_Front-CherryPop.png"
-							alt=""
-						/>
-					</div>
-					<div class="product-title">
-						<h2>CHERRY POP</h2>
-					</div>
-					<div class="cart-btn-holder">
-						<button class="add-to-cart-btn" id="add-to-cart">
-							add to cart
-						</button>
-					</div>
-				</article>
-			</section>
+			<div id="app"></div>
 			<!-- footer -->
 			<footer class="section footer">
 				<!-- footer links -->
