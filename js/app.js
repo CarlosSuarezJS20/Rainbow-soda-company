@@ -146,26 +146,18 @@ const products = [
 class SideCartDrawer {
 	cartProducts = [];
 
-	constructor() {
-		this.productInCartEl = document.getElementById('item-cart-template');
-	}
-
-	addToCart(id) {
-		console.log(id);
+	addToCart(product) {
+		this.cartProducts.push(product);
+		console.log(this.cartProducts);
+		const productEl = document.createElement('div');
+		productEl.textContent = 'product 1';
 	}
 
 	renderCart() {
 		let cartEl = document.createElement('h2');
-		cartEl.innerHTML = '<h2> Cart is Empty<h2>';
-		// if (this.cartProducts.length === 0) {
-		// } else {
-		// 	cartEl = productInCartElTemplate.querySelector('.cart-item');
-		// 	for (let productInCart of productsNoDuplicates) {
-		// 		cartEl.querySelector('h3').textContent = productInCart.productName;
-		// 		cartEl.querySelector('p').textContent = `£ ${productInCart.price}`;
-		// 		cartEl.querySelector('span').textContent = 1;
-		// 	}
-		// }
+		cartEl.id = 'cart-list-empty';
+		cartEl.textContent = 'Cart is Empty';
+
 		return cartEl;
 	}
 }
@@ -179,8 +171,8 @@ class SingleProductRendering extends SideCartDrawer {
 		this.productElementTemplate = document.getElementById('item-main-template');
 	}
 
-	addProductToCart = (product) => {
-		this.addToCart(product);
+	addProductToCart = () => {
+		this.addToCart(this.product);
 	};
 
 	render() {
@@ -195,7 +187,7 @@ class SingleProductRendering extends SideCartDrawer {
 
 		const btn = productEl.querySelector('button');
 		btn.addEventListener('click', () => {
-			this.addProductToCart(this.product.id);
+			this.addProductToCart();
 		});
 
 		return productEl;
