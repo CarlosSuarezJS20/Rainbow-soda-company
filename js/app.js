@@ -52,6 +52,8 @@ const products = [
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Cherry_Pop_Still_4K_Front-CherryPop.png?v=1588713373',
 		type: ['berry', 'citrusy', 'fancy'],
 		price: 7,
+		inCart: false,
+		amount: 0,
 	},
 	{
 		id: 2,
@@ -60,6 +62,8 @@ const products = [
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/SourBlueBerry_Still_4K_Front-SourBlueberry.png?v=1588713584',
 		type: ['sour', 'berry'],
 		price: 7,
+		inCart: false,
+		amount: 0,
 	},
 	{
 		id: 3,
@@ -68,6 +72,8 @@ const products = [
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/BlackBerry_Jam_Still_4K_Front-BlackberryJam.png?v=1595035965',
 		type: ['berry'],
 		price: 7,
+		inCart: false,
+		amount: 0,
 	},
 	{
 		id: 4,
@@ -76,6 +82,8 @@ const products = [
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Orange_Nectarine_Still_4K_Front-OrangeNectarine.png?v=1588713522',
 		type: ['Citrus', 'fancy', 'juicy'],
 		price: 7,
+		inCart: false,
+		amount: 0,
 	},
 	{
 		id: 5,
@@ -84,6 +92,8 @@ const products = [
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Lemon_Verbena_Still_4K_Front-LemonVerbena.png?v=1588713474',
 		type: ['Citrus', 'classic', 'floral'],
 		price: 7,
+		inCart: false,
+		amount: 0,
 	},
 	{
 		id: 6,
@@ -92,6 +102,8 @@ const products = [
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/ExtraPeach_Still_4K_Front-ExtraPeach.png?v=1588713411',
 		type: ['Juicy'],
 		price: 7,
+		inCart: false,
+		amount: 0,
 	},
 	{
 		id: 7,
@@ -100,6 +112,8 @@ const products = [
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Young_Mango_Still_4K_Front-YoungMango.png?v=1588713866',
 		type: ['Juicy'],
 		price: 7,
+		inCart: false,
+		amount: 0,
 	},
 	{
 		id: 8,
@@ -108,6 +122,8 @@ const products = [
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Cherry_Pop_Still_4K_Front-CherryPop.png?v=1588713373',
 		type: ['Classic'],
 		price: 7,
+		inCart: false,
+		amount: 0,
 	},
 	{
 		id: 9,
@@ -116,6 +132,8 @@ const products = [
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Pear_Elderflower_Still_4K_Front-PearElderflower.png?v=1588713554',
 		type: ['Classic', 'floral'],
 		price: 7,
+		inCart: false,
+		amount: 0,
 	},
 	{
 		id: 10,
@@ -124,6 +142,8 @@ const products = [
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Toasted_Coconut_Still_4K_Front-ToastedCoconut.png?v=1588713760',
 		type: ['Fancy'],
 		price: 7,
+		inCart: false,
+		amount: 0,
 	},
 	{
 		id: 11,
@@ -132,6 +152,8 @@ const products = [
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/White_Grape_Still_4K_Front-WhiteGrape.png?v=1588713834',
 		type: ['classic', 'jazzy'],
 		price: 7,
+		inCart: false,
+		amount: 0,
 	},
 	{
 		id: 12,
@@ -140,17 +162,40 @@ const products = [
 			'	https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Ginger_Ale_Still_4K_Front-GinergyAle.png?v=1588713442',
 		type: ['classic'],
 		price: 7,
+		inCart: false,
+		amount: 0,
 	},
 ];
 
 class SideCartDrawer {
-	cartProducts = [];
+	cart = [];
+	constructor() {
+		this.productInCartEl = document.getElementById('item-cart-template');
+	}
 
-	addToCart(product) {
-		this.cartProducts.push(product);
-		console.log(this.cartProducts);
-		const productEl = document.createElement('div');
-		productEl.textContent = 'product 1';
+	addToCart(id) {
+		const productInCart = products.find((prod) => prod.id === id);
+		if (productInCart.inCart === true) {
+			productInCart.amount += 1;
+			return;
+		}
+
+		productInCart.inCart = true;
+		productInCart.amount += 1;
+		const cartListhook = document.getElementById('cart-items-list');
+		const productInCartTemplate = document.importNode(
+			this.productInCartEl.content,
+			true
+		);
+		const productInCartEl = productInCartTemplate.querySelector('.cart-item');
+		for (let product of products) {
+			if (product.inCart === true) {
+				productInCartEl.querySelector('h3').textContent = product.productName;
+				productInCartEl.querySelector('p').textContent = product.price;
+				productInCartEl.querySelector('span').textContent = product.amount;
+			}
+		}
+		cartListhook.append(productInCartEl);
 	}
 
 	renderCart() {
@@ -171,8 +216,8 @@ class SingleProductRendering extends SideCartDrawer {
 		this.productElementTemplate = document.getElementById('item-main-template');
 	}
 
-	addProductToCart = () => {
-		this.addToCart(this.product);
+	addProductToCart = (id) => {
+		this.addToCart(id);
 	};
 
 	render() {
@@ -187,7 +232,7 @@ class SingleProductRendering extends SideCartDrawer {
 
 		const btn = productEl.querySelector('button');
 		btn.addEventListener('click', () => {
-			this.addProductToCart();
+			this.addProductToCart(this.product.id);
 		});
 
 		return productEl;

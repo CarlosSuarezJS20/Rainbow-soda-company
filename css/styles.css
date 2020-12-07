@@ -640,6 +640,12 @@ PRODUCT
 	transition: var(--transition);
 }
 
+.add-to-cart-btn:disabled {
+	color: #ccc;
+	display: block;
+	cursor: not-allowed;
+}
+
 /*
 =============== 
 Footer
