@@ -51,9 +51,7 @@ const products = [
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Cherry_Pop_Still_4K_Front-CherryPop.png?v=1588713373',
 		type: ['berry', 'citrusy', 'fancy'],
-		price: 7,
-		inCart: false,
-		amount: 0,
+		price: 5.5,
 	},
 	{
 		id: 2,
@@ -61,9 +59,7 @@ const products = [
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/SourBlueBerry_Still_4K_Front-SourBlueberry.png?v=1588713584',
 		type: ['sour', 'berry'],
-		price: 7,
-		inCart: false,
-		amount: 0,
+		price: 4,
 	},
 	{
 		id: 3,
@@ -71,9 +67,7 @@ const products = [
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/BlackBerry_Jam_Still_4K_Front-BlackberryJam.png?v=1595035965',
 		type: ['berry'],
-		price: 7,
-		inCart: false,
-		amount: 0,
+		price: 10,
 	},
 	{
 		id: 4,
@@ -81,9 +75,7 @@ const products = [
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Orange_Nectarine_Still_4K_Front-OrangeNectarine.png?v=1588713522',
 		type: ['Citrus', 'fancy', 'juicy'],
-		price: 7,
-		inCart: false,
-		amount: 0,
+		price: 6,
 	},
 	{
 		id: 5,
@@ -91,9 +83,7 @@ const products = [
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Lemon_Verbena_Still_4K_Front-LemonVerbena.png?v=1588713474',
 		type: ['Citrus', 'classic', 'floral'],
-		price: 7,
-		inCart: false,
-		amount: 0,
+		price: 4.5,
 	},
 	{
 		id: 6,
@@ -101,9 +91,7 @@ const products = [
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/ExtraPeach_Still_4K_Front-ExtraPeach.png?v=1588713411',
 		type: ['Juicy'],
-		price: 7,
-		inCart: false,
-		amount: 0,
+		price: 8.5,
 	},
 	{
 		id: 7,
@@ -111,9 +99,7 @@ const products = [
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Young_Mango_Still_4K_Front-YoungMango.png?v=1588713866',
 		type: ['Juicy'],
-		price: 7,
-		inCart: false,
-		amount: 0,
+		price: 6.5,
 	},
 	{
 		id: 8,
@@ -121,9 +107,7 @@ const products = [
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Cherry_Pop_Still_4K_Front-CherryPop.png?v=1588713373',
 		type: ['Classic'],
-		price: 7,
-		inCart: false,
-		amount: 0,
+		price: 7.5,
 	},
 	{
 		id: 9,
@@ -131,9 +115,7 @@ const products = [
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Pear_Elderflower_Still_4K_Front-PearElderflower.png?v=1588713554',
 		type: ['Classic', 'floral'],
-		price: 7,
-		inCart: false,
-		amount: 0,
+		price: 8,
 	},
 	{
 		id: 10,
@@ -142,8 +124,6 @@ const products = [
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Toasted_Coconut_Still_4K_Front-ToastedCoconut.png?v=1588713760',
 		type: ['Fancy'],
 		price: 7,
-		inCart: false,
-		amount: 0,
 	},
 	{
 		id: 11,
@@ -151,9 +131,7 @@ const products = [
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/White_Grape_Still_4K_Front-WhiteGrape.png?v=1588713834',
 		type: ['classic', 'jazzy'],
-		price: 7,
-		inCart: false,
-		amount: 0,
+		price: 5,
 	},
 	{
 		id: 12,
@@ -161,63 +139,94 @@ const products = [
 		productImgURL:
 			'	https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Ginger_Ale_Still_4K_Front-GinergyAle.png?v=1588713442',
 		type: ['classic'],
-		price: 7,
-		inCart: false,
-		amount: 0,
+		price: 6,
 	},
 ];
 
 class SideCartDrawer {
-	cart = [];
+	cartProducts = [];
+
 	constructor() {
-		this.productInCartEl = document.getElementById('item-cart-template');
+		this.cartElTemplateAccess = document.getElementById('item-cart-template');
 	}
 
-	addToCart(id) {
-		const productInCart = products.find((prod) => prod.id === id);
-		if (productInCart.inCart === true) {
-			productInCart.amount += 1;
-			return;
-		}
+	get totalCartValue() {
+		const total = this.cartProducts
+			.map((prod) => prod.qty * prod.price)
+			.reduce((prev, current) => prev + current);
+		return total;
+	}
 
-		productInCart.inCart = true;
-		productInCart.amount += 1;
-		const cartListhook = document.getElementById('cart-items-list');
-		const productInCartTemplate = document.importNode(
-			this.productInCartEl.content,
+	totalInCart() {
+		document.getElementById(
+			'total-cart'
+		).textContent = `£ ${this.totalCartValue}`;
+	}
+
+	removeItemFromCart(id, event) {
+		const itemInCartIndex = this.cartProducts.findIndex(
+			(item) => item.id === id
+		);
+		this.cartProducts.splice(itemInCartIndex, 1);
+		event.target.parentElement.parentElement.parentElement.remove();
+		document.getElementById('total-cart').textContent =
+			this.cartProducts.length === 0 ? 0 : `£ ${this.totalCartValue}`;
+	}
+
+	addProduct(product) {
+		const cartProduct = this.cartProducts.find(
+			(prod) => prod.id === product.id
+		);
+		const productTemplateEl = document.importNode(
+			this.cartElTemplateAccess.content,
 			true
 		);
-		const productInCartEl = productInCartTemplate.querySelector('.cart-item');
-		for (let product of products) {
-			if (product.inCart === true) {
-				productInCartEl.querySelector('h3').textContent = product.productName;
-				productInCartEl.querySelector('p').textContent = product.price;
-				productInCartEl.querySelector('span').textContent = product.amount;
-			}
+		const cartList = document.getElementById('cart-items-list');
+		const cartEl = productTemplateEl.querySelector('.cart-item');
+
+		if (cartProduct) {
+			product.qty++;
+			document.getElementById(`cart-${product.id}`).remove();
+		} else {
+			product.qty = 1;
+			const updatedItems = [...this.cartProducts];
+			updatedItems.push(product);
+			this.cartProducts = updatedItems;
 		}
-		cartListhook.append(productInCartEl);
+
+		this.cartProducts.forEach((prod) => {
+			cartEl.id = `cart-${prod.id}`;
+			cartEl.querySelector('h3').textContent = prod.productName;
+			cartEl.querySelector('p').textContent = `£ ${prod.price}`;
+			cartEl.querySelector('span').textContent = prod.qty;
+		});
+		cartList.append(cartEl);
+		cartEl.addEventListener('click', (event) => {
+			this.removeItemFromCart(product.id, event);
+		});
+		this.totalInCart(product.qty, product.price);
 	}
 
 	renderCart() {
-		let cartEl = document.createElement('h2');
-		cartEl.id = 'cart-list-empty';
-		cartEl.textContent = 'Cart is Empty';
-
+		let cartEl = document.createElement('section');
+		cartEl.className = 'cart-items-list';
+		cartEl.id = 'cart-items-list';
+		cartEl.innerHTML = '<h2>Cart is Empty<h2>';
+		this.currentHTML = cartEl.querySelector('h2');
 		return cartEl;
 	}
 }
 
 //Single product rendering
 
-class SingleProductRendering extends SideCartDrawer {
+class SingleProductRendering {
 	constructor(productDetails) {
-		super();
 		this.product = productDetails;
 		this.productElementTemplate = document.getElementById('item-main-template');
 	}
 
-	addProductToCart = (id) => {
-		this.addToCart(id);
+	addProductToCart = () => {
+		App.addProductToCart(this.product);
 	};
 
 	render() {
@@ -232,7 +241,7 @@ class SingleProductRendering extends SideCartDrawer {
 
 		const btn = productEl.querySelector('button');
 		btn.addEventListener('click', () => {
-			this.addProductToCart(this.product.id);
+			this.addProductToCart();
 		});
 
 		return productEl;
@@ -269,16 +278,31 @@ class ProductList {
 class Shop {
 	render() {
 		const renderHookProductList = document.getElementById('app');
-		const cartHook = document.getElementById('cart-items-list');
+		const cartHook = document.getElementById('cart-items-hook');
+
 		const productList = new ProductList();
 		const productListRendered = productList.render();
-		renderHookProductList.append(productListRendered);
 
-		const cartItemDrawer = new SideCartDrawer();
-		const cartDrawer = cartItemDrawer.renderCart();
+		this.cartItemDrawer = new SideCartDrawer();
+		const cartDrawer = this.cartItemDrawer.renderCart();
+
+		renderHookProductList.append(productListRendered);
 		cartHook.append(cartDrawer);
 	}
 }
 
-const shop = new Shop();
-shop.render();
+class App {
+	static cartItemDrawer;
+
+	static init() {
+		const shop = new Shop();
+		shop.render();
+		this.cartItemDrawer = shop.cartItemDrawer;
+	}
+
+	static addProductToCart(product) {
+		this.cartItemDrawer.addProduct(product);
+	}
+}
+
+App.init();

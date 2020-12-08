@@ -596,6 +596,9 @@ PRODUCT
 .single-product:hover button {
 	display: block;
 }
+.product-price:hover p {
+	display: block;
+}
 
 .product-title {
 	margin: 1rem 0;
@@ -604,6 +607,11 @@ PRODUCT
 .product-title h2 {
 	font-size: 2.5rem;
 	font-weight: 300;
+}
+
+.product-price {
+	font-size: 1.5rem;
+	display: none;
 }
 
 .product-img-container {

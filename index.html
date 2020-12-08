@@ -36,6 +36,7 @@
 				</div>
 			</article>
 		</template>
+		<!-- Cart Item Template -->
 		<template id="item-cart-template">
 			<article class="cart-item">
 				<div class="side-cart-product-item">
@@ -45,10 +46,10 @@
 					</button>
 				</div>
 				<div class="side-cart-product-price">
-					<p>$40</p>
+					<p></p>
 					<div class="cart-qty">
 						<button class="qty-btn">-</button>
-						<span>1</span>
+						<span>0</span>
 						<button class="qty-btn">+</button>
 					</div>
 				</div>
@@ -69,6 +70,7 @@
 			</nav>
 		</header>
 		<main>
+			<!-- SideMenu bar -->
 			<div class="side-menu" id="side-menu">
 				<button type="button" id="drawer-close" class="drawer-menu-close">
 					<i class="far fa-window-close"></i>
@@ -86,6 +88,7 @@
 					</li>
 				</ul>
 			</div>
+			<!-- Cart Drawer -->
 			<div class="cart-drawer" id="side-cart">
 				<div class="cart-inner">
 					<button
@@ -96,12 +99,12 @@
 						<i class="far fa-window-close"></i>
 					</button>
 					<div class="cart-drawer-title">CART</div>
-					<section class="cart-items-list" id="cart-items-list"></section>
+					<div id="cart-items-hook"></div>
 				</div>
 				<div class="cart-footer">
 					<div class="total-display-side-cart">
 						<h3>total</h3>
-						<span>0</span>
+						<span id="total-cart">0</span>
 					</div>
 					<button class="checkout-drawer">checkout</button>
 				</div>
