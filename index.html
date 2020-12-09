@@ -29,7 +29,7 @@
 					<img class="tour-img" src="" alt="" />
 				</div>
 				<div class="product-title">
-					<h2></h2>
+					<h2 id="cart-empty"></h2>
 				</div>
 				<div class="cart-btn-holder">
 					<button class="add-to-cart-btn" id="add-to-cart">add to cart</button>
@@ -41,14 +41,14 @@
 			<article class="cart-item">
 				<div class="side-cart-product-item">
 					<h3></h3>
-					<button class="trash-icon" id="trash-icon">
+					<button class="trash-icon" id="delete-btn">
 						<i class="far fa-trash-alt"></i>
 					</button>
 				</div>
 				<div class="side-cart-product-price">
 					<p></p>
 					<div class="cart-qty">
-						<button class="qty-btn">-</button>
+						<button class="qty-btn" disabled>-</button>
 						<span>0</span>
 						<button class="qty-btn">+</button>
 					</div>
@@ -64,7 +64,9 @@
 				<h1 class="header-title">RAINBOW SODAS UK</h1>
 				<button type="button" class="nav-toggle" id="cart-drawer-open">
 					<i class="fas fa-shopping-cart"
-						><span class="cart-items-counter">0</span></i
+						><span class="cart-items-counter" id="cart-items-counter"
+							>0</span
+						></i
 					>
 				</button>
 			</nav>
@@ -101,7 +103,7 @@
 					<div class="cart-drawer-title">CART</div>
 					<div id="cart-items-hook"></div>
 				</div>
-				<div class="cart-footer">
+				<div class="cart-footer" id="cart-footer">
 					<div class="total-display-side-cart">
 						<h3>total</h3>
 						<span id="total-cart">0</span>
