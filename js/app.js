@@ -50,7 +50,7 @@ const products = [
 		productName: 'Strawberry Basil',
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Cherry_Pop_Still_4K_Front-CherryPop.png?v=1588713373',
-		type: ['berry', 'citrusy', 'fancy'],
+		type: ['berries', 'citrusy', 'fancy'],
 		price: 5.5,
 	},
 	{
@@ -58,7 +58,7 @@ const products = [
 		productName: 'Sour Blueberry',
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/SourBlueBerry_Still_4K_Front-SourBlueberry.png?v=1588713584',
-		type: ['sour', 'berry'],
+		type: ['sour', 'berries'],
 		price: 4,
 	},
 	{
@@ -66,7 +66,7 @@ const products = [
 		productName: 'Blackberry Jam',
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/BlackBerry_Jam_Still_4K_Front-BlackberryJam.png?v=1595035965',
-		type: ['berry'],
+		type: ['berries'],
 		price: 10,
 	},
 	{
@@ -340,16 +340,21 @@ class ProductList {
 
 	connectingFiltersButtons() {
 		let filterValues = [];
-		document.getElementById('berry-btn').addEventListener('click', (event) => {
-			filterValues.push('berry');
-			event.target.className = 'filter-btn-active';
-			this.filterCategories(filterValues);
-			document.getElementById('remove-filters-btn').style.display = 'block';
-		});
+		document
+			.getElementById('berries-btn')
+			.addEventListener('click', (event) => {
+				if (filterValues.find((f) => f === event.target.value)) {
+					console.log('already exists');
+				}
+				filterValues.push(event.target.value);
+				event.target.className = 'filter-btn-active';
+				this.filterCategories(filterValues);
+				document.getElementById('remove-filters-btn').style.display = 'block';
+			});
 		document
 			.getElementById('citrusy-btn')
 			.addEventListener('click', (event) => {
-				filterValues.push('citrusy');
+				filterValues.push(event.target.value);
 				event.target.className = 'filter-btn-active';
 				this.filterCategories(filterValues);
 				document.getElementById('remove-filters-btn').style.display = 'block';
@@ -357,37 +362,37 @@ class ProductList {
 		document
 			.getElementById('classic-btn')
 			.addEventListener('click', (event) => {
-				filterValues.push('classic');
+				filterValues.push(event.target.value);
 				event.target.className = 'filter-btn-active';
 				this.filterCategories(filterValues);
 				document.getElementById('remove-filters-btn').style.display = 'block';
 			});
 		document.getElementById('fancy-btn').addEventListener('click', (event) => {
-			filterValues.push('fancy');
+			filterValues.push(event.target.value);
 			event.target.className = 'filter-btn-active';
 			this.filterCategories(filterValues);
 			document.getElementById('remove-filters-btn').style.display = 'block';
 		});
 		document.getElementById('floral-btn').addEventListener('click', (event) => {
-			filterValues.push('floral');
+			filterValues.push(event.target.value);
 			event.target.className = 'filter-btn-active';
 			this.filterCategories(filterValues);
 			document.getElementById('remove-filters-btn').style.display = 'block';
 		});
 		document.getElementById('jazzy-btn').addEventListener('click', (event) => {
-			filterValues.push('jazzy');
+			filterValues.push(event.target.value);
 			event.target.className = 'filter-btn-active';
 			this.filterCategories(filterValues);
 			document.getElementById('remove-filters-btn').style.display = 'block';
 		});
 		document.getElementById('juicy-btn').addEventListener('click', (event) => {
-			filterValues.push('juicy');
+			filterValues.push(event.target.value);
 			this.filterCategories(filterValues);
 			event.target.className = 'filter-btn-active';
 			document.getElementById('remove-filters-btn').style.display = 'block';
 		});
 		document.getElementById('sour-btn').addEventListener('click', (event) => {
-			filterValues.push('sour');
+			filterValues.push(event.target.value);
 			this.filterCategories(filterValues);
 			event.target.className = 'filter-btn-active';
 			document.getElementById('remove-filters-btn').style.display = 'block';
