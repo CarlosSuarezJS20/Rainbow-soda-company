@@ -50,7 +50,7 @@ const products = [
 		productName: 'Strawberry Basil',
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Cherry_Pop_Still_4K_Front-CherryPop.png?v=1588713373',
-		type: ['berries', 'citrusy', 'fancy'],
+		type: ['all', 'berries', 'citrusy', 'fancy'],
 		price: 5.5,
 	},
 	{
@@ -320,22 +320,29 @@ class ProductList {
 	}
 
 	filterCategories(userFilters) {
-		const filters = userFilters.filter((filter, index) => {
-			return userFilters.indexOf(filter) === index;
-		});
-		this.products
-			.filter((prod) => {
-				return !prod.type.some((prodType) => filters.includes(prodType));
-			})
-			.map((p) => p.id)
-			.forEach((p) => (document.getElementById(p).style.display = 'none'));
+		if (userFilters.length === 0) {
+			const products = this.products.map((p) => p.id);
+			products.forEach(
+				(p) => (document.getElementById(p).style.display = 'block')
+			);
+		} else {
+			const filters = userFilters.filter((filter, index) => {
+				return userFilters.indexOf(filter) === index;
+			});
+			this.products
+				.filter((prod) => {
+					return !prod.type.some((prodType) => filters.includes(prodType));
+				})
+				.map((p) => p.id)
+				.forEach((p) => (document.getElementById(p).style.display = 'none'));
 
-		this.products
-			.filter((prod) => {
-				return prod.type.some((prodType) => filters.includes(prodType));
-			})
-			.map((p) => p.id)
-			.forEach((p) => (document.getElementById(p).style.display = 'block'));
+			this.products
+				.filter((prod) => {
+					return prod.type.some((prodType) => filters.includes(prodType));
+				})
+				.map((p) => p.id)
+				.forEach((p) => (document.getElementById(p).style.display = 'block'));
+		}
 	}
 
 	connectingFiltersButtons() {
@@ -344,64 +351,132 @@ class ProductList {
 			.getElementById('berries-btn')
 			.addEventListener('click', (event) => {
 				if (filterValues.find((f) => f === event.target.value)) {
-					console.log('already exists');
+					event.target.classList.remove('filter-btn-active');
+					const btnIndex = filterValues.findIndex((f) => {
+						return f === event.target.value;
+					});
+					filterValues.splice(btnIndex, 1);
+					this.filterCategories(filterValues);
+				} else {
+					filterValues.push(event.target.value);
+					event.target.classList.add('filter-btn-active');
+					this.filterCategories(filterValues);
+					document.getElementById('remove-filters-btn').style.display = 'block';
 				}
-				filterValues.push(event.target.value);
-				event.target.className = 'filter-btn-active';
-				this.filterCategories(filterValues);
-				document.getElementById('remove-filters-btn').style.display = 'block';
 			});
 		document
 			.getElementById('citrusy-btn')
 			.addEventListener('click', (event) => {
-				filterValues.push(event.target.value);
-				event.target.className = 'filter-btn-active';
-				this.filterCategories(filterValues);
-				document.getElementById('remove-filters-btn').style.display = 'block';
+				if (filterValues.find((f) => f === event.target.value)) {
+					event.target.classList.remove('filter-btn-active');
+					const btnIndex = filterValues.findIndex((f) => {
+						return f === event.target.value;
+					});
+					filterValues.splice(btnIndex, 1);
+					this.filterCategories(filterValues);
+				} else {
+					filterValues.push(event.target.value);
+					event.target.classList.add('filter-btn-active');
+					this.filterCategories(filterValues);
+					document.getElementById('remove-filters-btn').style.display = 'block';
+				}
 			});
 		document
 			.getElementById('classic-btn')
 			.addEventListener('click', (event) => {
-				filterValues.push(event.target.value);
-				event.target.className = 'filter-btn-active';
-				this.filterCategories(filterValues);
-				document.getElementById('remove-filters-btn').style.display = 'block';
+				if (filterValues.find((f) => f === event.target.value)) {
+					event.target.classList.remove('filter-btn-active');
+					const btnIndex = filterValues.findIndex((f) => {
+						return f === event.target.value;
+					});
+					filterValues.splice(btnIndex, 1);
+					this.filterCategories(filterValues);
+				} else {
+					filterValues.push(event.target.value);
+					event.target.classList.add('filter-btn-active');
+					this.filterCategories(filterValues);
+					document.getElementById('remove-filters-btn').style.display = 'block';
+				}
 			});
 		document.getElementById('fancy-btn').addEventListener('click', (event) => {
-			filterValues.push(event.target.value);
-			event.target.className = 'filter-btn-active';
-			this.filterCategories(filterValues);
-			document.getElementById('remove-filters-btn').style.display = 'block';
+			if (filterValues.find((f) => f === event.target.value)) {
+				event.target.classList.remove('filter-btn-active');
+				const btnIndex = filterValues.findIndex((f) => {
+					return f === event.target.value;
+				});
+				filterValues.splice(btnIndex, 1);
+				this.filterCategories(filterValues);
+			} else {
+				filterValues.push(event.target.value);
+				event.target.classList.add('filter-btn-active');
+				this.filterCategories(filterValues);
+				document.getElementById('remove-filters-btn').style.display = 'block';
+			}
 		});
 		document.getElementById('floral-btn').addEventListener('click', (event) => {
-			filterValues.push(event.target.value);
-			event.target.className = 'filter-btn-active';
-			this.filterCategories(filterValues);
-			document.getElementById('remove-filters-btn').style.display = 'block';
+			if (filterValues.find((f) => f === event.target.value)) {
+				event.target.classList.remove('filter-btn-active');
+				const btnIndex = filterValues.findIndex((f) => {
+					return f === event.target.value;
+				});
+				filterValues.splice(btnIndex, 1);
+				this.filterCategories(filterValues);
+			} else {
+				filterValues.push(event.target.value);
+				event.target.classList.add('filter-btn-active');
+				this.filterCategories(filterValues);
+				document.getElementById('remove-filters-btn').style.display = 'block';
+			}
 		});
 		document.getElementById('jazzy-btn').addEventListener('click', (event) => {
-			filterValues.push(event.target.value);
-			event.target.className = 'filter-btn-active';
-			this.filterCategories(filterValues);
-			document.getElementById('remove-filters-btn').style.display = 'block';
+			if (filterValues.find((f) => f === event.target.value)) {
+				event.target.classList.remove('filter-btn-active');
+				const btnIndex = filterValues.findIndex((f) => {
+					return f === event.target.value;
+				});
+				filterValues.splice(btnIndex, 1);
+				this.filterCategories(filterValues);
+			} else {
+				filterValues.push(event.target.value);
+				event.target.classList.add('filter-btn-active');
+				this.filterCategories(filterValues);
+				document.getElementById('remove-filters-btn').style.display = 'block';
+			}
 		});
 		document.getElementById('juicy-btn').addEventListener('click', (event) => {
-			filterValues.push(event.target.value);
-			this.filterCategories(filterValues);
-			event.target.className = 'filter-btn-active';
-			document.getElementById('remove-filters-btn').style.display = 'block';
+			if (filterValues.find((f) => f === event.target.value)) {
+				event.target.classList.remove('filter-btn-active');
+				const btnIndex = filterValues.findIndex((f) => {
+					return f === event.target.value;
+				});
+				filterValues.splice(btnIndex, 1);
+				this.filterCategories(filterValues);
+			} else {
+				filterValues.push(event.target.value);
+				event.target.classList.add('filter-btn-active');
+				this.filterCategories(filterValues);
+				document.getElementById('remove-filters-btn').style.display = 'block';
+			}
 		});
 		document.getElementById('sour-btn').addEventListener('click', (event) => {
-			filterValues.push(event.target.value);
-			this.filterCategories(filterValues);
-			event.target.className = 'filter-btn-active';
-			document.getElementById('remove-filters-btn').style.display = 'block';
+			if (filterValues.find((f) => f === event.target.value)) {
+				event.target.classList.remove('filter-btn-active');
+				const btnIndex = filterValues.findIndex((f) => {
+					return f === event.target.value;
+				});
+				filterValues.splice(btnIndex, 1);
+				this.filterCategories(filterValues);
+			} else {
+				filterValues.push(event.target.value);
+				event.target.classList.add('filter-btn-active');
+				this.filterCategories(filterValues);
+				document.getElementById('remove-filters-btn').style.display = 'block';
+			}
 		});
 		document
 			.getElementById('remove-filters-btn')
 			.addEventListener('click', (event) => {
 				filterValues.splice(0, filterValues.length);
-				console.log(filterValues);
 				this.clearFilters(event);
 			});
 	}
@@ -411,6 +486,10 @@ class ProductList {
 			.map((p) => p.id)
 			.forEach((p) => (document.getElementById(p).style.display = 'block'));
 		event.target.style.display = 'none';
+		document
+			.getElementById('categories-holder')
+			.querySelectorAll('button')
+			.forEach((e) => e.classList.remove('filter-btn-active'));
 	}
 
 	render() {
