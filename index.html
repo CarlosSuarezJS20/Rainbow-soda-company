@@ -23,6 +23,7 @@
 	</head>
 
 	<body>
+		<!-- Single Product template -->
 		<template id="item-main-template">
 			<article class="single-product">
 				<div class="product-image-container">
@@ -55,7 +56,6 @@
 				</div>
 			</article>
 		</template>
-
 		<header id="home">
 			<nav>
 				<button type="button" class="nav-toggle" id="nav-toggle">
@@ -145,19 +145,47 @@
 					filter
 					<span id="filter-btn-span"><i class="far fa-minus-square"></i></span>
 				</button>
+				<a class="remove-filters" id="remove-filters-btn">x remove filters</a>
 				<div class="categories-holder" id="categories-holder">
-					<button class="filter-btn" type="button" value="Berry">berry</button>
-					<button class="filter-btn" type="button" value="Berry">
+					<button class="filter-btn" type="button" value="berry" id="berry-btn">
+						berry
+					</button>
+					<button
+						class="filter-btn"
+						type="button"
+						value="citrusy"
+						id="citrusy-btn"
+					>
 						citrusy
 					</button>
-					<button class="filter-btn" type="button" value="Berry">
+					<button
+						class="filter-btn"
+						type="button"
+						value="classic"
+						id="classic-btn"
+					>
 						classic
 					</button>
-					<button class="filter-btn" type="button" value="Berry">fancy</button>
-					<button class="filter-btn" type="button" value="Berry">floral</button>
-					<button class="filter-btn" type="button" value="Berry">jazzy</button>
-					<button class="filter-btn" type="button" value="Berry">juicy</button>
-					<button class="filter-btn" type="button" value="Berry">sour</button>
+					<button class="filter-btn" type="button" value="fancy" id="fancy-btn">
+						fancy
+					</button>
+					<button
+						class="filter-btn"
+						type="button"
+						value="floral"
+						id="floral-btn"
+					>
+						floral
+					</button>
+					<button class="filter-btn" type="button" value="jazzy" id="jazzy-btn">
+						jazzy
+					</button>
+					<button class="filter-btn" type="button" value="juicy" id="juicy-btn">
+						juicy
+					</button>
+					<button class="filter-btn" type="button" value="sour" id="sour-btn">
+						sour
+					</button>
 				</div>
 			</section>
 			<div id="app"></div>

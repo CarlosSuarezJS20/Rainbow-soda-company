@@ -38,7 +38,7 @@ cartDrawerCloseBtn.addEventListener('click', () => {
 //Toggle Filter Options Main page
 toggleFilterBt.addEventListener('click', () => {
 	categoriesHolder.classList.toggle('categories-show');
-	filterText.innerHTML = categoriesHolder.classList.contains('categories-show')
+	document.getElementById('remove-filters-btn')
 		? '<i class="far fa-plus-square"></i>'
 		: '<i class="far fa-minus-square"></i>';
 });
@@ -74,7 +74,7 @@ const products = [
 		productName: 'Orange Nectarine',
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Orange_Nectarine_Still_4K_Front-OrangeNectarine.png?v=1588713522',
-		type: ['Citrus', 'fancy', 'juicy'],
+		type: ['citrusy', 'fancy', 'juicy'],
 		price: 6,
 	},
 	{
@@ -82,7 +82,7 @@ const products = [
 		productName: 'Lemon Verbena',
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Lemon_Verbena_Still_4K_Front-LemonVerbena.png?v=1588713474',
-		type: ['Citrus', 'classic', 'floral'],
+		type: ['citrusy', 'classic', 'floral'],
 		price: 4.5,
 	},
 	{
@@ -90,7 +90,7 @@ const products = [
 		productName: 'Extra Peach',
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/ExtraPeach_Still_4K_Front-ExtraPeach.png?v=1588713411',
-		type: ['Juicy'],
+		type: ['juicy'],
 		price: 8.5,
 	},
 	{
@@ -98,7 +98,7 @@ const products = [
 		productName: 'Young Mango',
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Young_Mango_Still_4K_Front-YoungMango.png?v=1588713866',
-		type: ['Juicy'],
+		type: ['juicy'],
 		price: 6.5,
 	},
 	{
@@ -106,7 +106,7 @@ const products = [
 		productName: 'Cherry Pop',
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Cherry_Pop_Still_4K_Front-CherryPop.png?v=1588713373',
-		type: ['Classic'],
+		type: ['classic'],
 		price: 7.5,
 	},
 	{
@@ -114,7 +114,7 @@ const products = [
 		productName: 'Pear Elder-Flower',
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Pear_Elderflower_Still_4K_Front-PearElderflower.png?v=1588713554',
-		type: ['Classic', 'floral'],
+		type: ['classic', 'floral'],
 		price: 8,
 	},
 	{
@@ -122,7 +122,7 @@ const products = [
 		productName: 'Toasted Coconut',
 		productImgURL:
 			'https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Toasted_Coconut_Still_4K_Front-ToastedCoconut.png?v=1588713760',
-		type: ['Fancy'],
+		type: ['fancy'],
 		price: 7,
 	},
 	{
@@ -173,7 +173,6 @@ class SideCartDrawer {
 			document.getElementById('cart-footer').classList.remove('show-footer');
 			document.getElementById('initial-message').style.display = 'block';
 		}
-		console.log(this.cartProducts);
 	}
 
 	totalInCart() {
@@ -297,6 +296,10 @@ class SingleProductRendering {
 
 		const btn = productEl.querySelector('button');
 		btn.addEventListener('click', () => {
+			btn.textContent = 'added!';
+			setTimeout(() => {
+				btn.textContent = 'add to cart';
+			}, 1000);
 			this.addProductToCartBtnHandler();
 		});
 
@@ -309,10 +312,100 @@ class SingleProductRendering {
 class ProductList {
 	constructor() {
 		this.fetchProducts();
+		this.connectingFiltersButtons();
 	}
 
 	fetchProducts() {
 		this.products = products;
+	}
+
+	filterCategories(userFilters) {
+		const filters = userFilters.filter((filter, index) => {
+			return userFilters.indexOf(filter) === index;
+		});
+		this.products
+			.filter((prod) => {
+				return !prod.type.some((prodType) => filters.includes(prodType));
+			})
+			.map((p) => p.id)
+			.forEach((p) => (document.getElementById(p).style.display = 'none'));
+
+		this.products
+			.filter((prod) => {
+				return prod.type.some((prodType) => filters.includes(prodType));
+			})
+			.map((p) => p.id)
+			.forEach((p) => (document.getElementById(p).style.display = 'block'));
+	}
+
+	connectingFiltersButtons() {
+		let filterValues = [];
+		document.getElementById('berry-btn').addEventListener('click', (event) => {
+			filterValues.push('berry');
+			event.target.className = 'filter-btn-active';
+			this.filterCategories(filterValues);
+			document.getElementById('remove-filters-btn').style.display = 'block';
+		});
+		document
+			.getElementById('citrusy-btn')
+			.addEventListener('click', (event) => {
+				filterValues.push('citrusy');
+				event.target.className = 'filter-btn-active';
+				this.filterCategories(filterValues);
+				document.getElementById('remove-filters-btn').style.display = 'block';
+			});
+		document
+			.getElementById('classic-btn')
+			.addEventListener('click', (event) => {
+				filterValues.push('classic');
+				event.target.className = 'filter-btn-active';
+				this.filterCategories(filterValues);
+				document.getElementById('remove-filters-btn').style.display = 'block';
+			});
+		document.getElementById('fancy-btn').addEventListener('click', (event) => {
+			filterValues.push('fancy');
+			event.target.className = 'filter-btn-active';
+			this.filterCategories(filterValues);
+			document.getElementById('remove-filters-btn').style.display = 'block';
+		});
+		document.getElementById('floral-btn').addEventListener('click', (event) => {
+			filterValues.push('floral');
+			event.target.className = 'filter-btn-active';
+			this.filterCategories(filterValues);
+			document.getElementById('remove-filters-btn').style.display = 'block';
+		});
+		document.getElementById('jazzy-btn').addEventListener('click', (event) => {
+			filterValues.push('jazzy');
+			event.target.className = 'filter-btn-active';
+			this.filterCategories(filterValues);
+			document.getElementById('remove-filters-btn').style.display = 'block';
+		});
+		document.getElementById('juicy-btn').addEventListener('click', (event) => {
+			filterValues.push('juicy');
+			this.filterCategories(filterValues);
+			event.target.className = 'filter-btn-active';
+			document.getElementById('remove-filters-btn').style.display = 'block';
+		});
+		document.getElementById('sour-btn').addEventListener('click', (event) => {
+			filterValues.push('sour');
+			this.filterCategories(filterValues);
+			event.target.className = 'filter-btn-active';
+			document.getElementById('remove-filters-btn').style.display = 'block';
+		});
+		document
+			.getElementById('remove-filters-btn')
+			.addEventListener('click', (event) => {
+				filterValues.splice(0, filterValues.length);
+				console.log(filterValues);
+				this.clearFilters(event);
+			});
+	}
+
+	clearFilters(event) {
+		this.products
+			.map((p) => p.id)
+			.forEach((p) => (document.getElementById(p).style.display = 'block'));
+		event.target.style.display = 'none';
 	}
 
 	render() {
@@ -324,7 +417,6 @@ class ProductList {
 			const productElRendered = productEl.render();
 			productListEl.append(productElRendered);
 		}
-
 		return productListEl;
 	}
 }

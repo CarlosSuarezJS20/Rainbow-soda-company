@@ -389,9 +389,6 @@ span {
 	.cart-drawer {
 		width: 500px;
 	}
-	/* .cart-items-list {
-		height: 300px;
-	} */
 }
 @media screen and (min-width: 1370px) {
 	.cart-drawer {
@@ -525,21 +522,6 @@ PRODUCTS
 	line-height: 0.8em;
 }
 
-.toggle-filter {
-	font-size: 2rem;
-	margin-top: 2rem;
-	background: var(--clr-white);
-	text-transform: uppercase;
-	border-style: none;
-	cursor: pointer;
-	margin-left: 1rem;
-	outline: 0;
-}
-
-.toggle-filter:hover {
-	color: var(--clr-primary-3);
-}
-
 .categories-holder {
 	height: 0;
 	overflow: hidden;
@@ -551,6 +533,48 @@ PRODUCTS
 
 .categories-show {
 	height: 400px;
+}
+
+/* 
+=============== 
+FILTERS
+===============
+*/
+
+.toggle-filter {
+	font-size: 2rem;
+	margin-top: 2rem;
+	background: var(--clr-white);
+	text-transform: uppercase;
+	border-style: none;
+	cursor: pointer;
+	margin-left: 1rem;
+	outline: 0;
+}
+
+.remove-filters {
+	margin-top: 0.5rem;
+	margin-left: 4.5rem;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 1.3rem;
+	color: #ccc;
+	transition: var(--transition);
+	display: none;
+}
+
+.show-remove-filters {
+	display: block;
+}
+
+.remove-filters:hover {
+	color: var(--clr-primary-1);
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.toggle-filter:hover {
+	color: var(--clr-primary-1);
 }
 
 .filter-btn {
@@ -571,19 +595,29 @@ PRODUCTS
 }
 
 .filter-btn:hover {
-	color: var(--clr-white);
 	background: var(--clr-primary-1);
+	color: var(--clr-white);
 	border: 1px solid rgb(97, 97, 97);
 	border-radius: 90px;
 	transition: var(--transition);
 }
 
-.active {
-	color: var(--clr-white);
+.filter-btn-active {
 	background: var(--clr-primary-1);
-	border: 1px solid rgb(97, 97, 97);
-	border-radius: 90px;
-	transition: var(--transition);
+	color: var(--clr-white);
+	font-weight: bold;
+	text-transform: capitalize;
+	font-size: 1rem;
+	margin: 0;
+	border: 2px solid var(--clr-primary-1);
+	padding: 0.5rem;
+	margin: 0.4rem;
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	cursor: pointer;
+	outline: 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -664,12 +698,6 @@ PRODUCT
 	color: var(--clr-white);
 	border: 2px solid var(--clr-primary-3);
 	transition: var(--transition);
-}
-
-.add-to-cart-btn:disabled {
-	color: #ccc;
-	display: block;
-	cursor: not-allowed;
 }
 
 /*
