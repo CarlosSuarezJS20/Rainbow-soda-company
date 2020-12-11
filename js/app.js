@@ -43,7 +43,7 @@ toggleFilterBt.addEventListener('click', () => {
 		: '<i class="far fa-minus-square"></i>';
 });
 
-// local Item List for development
+// local STORAGE List for development
 const products = [
 	{
 		id: 1,
@@ -147,7 +147,24 @@ class SideCartDrawer {
 	cartProducts = [];
 
 	constructor() {
+		// Getting access to the cart item template template from the HTML
 		this.cartElTemplateAccess = document.getElementById('item-cart-template');
+		// Connection with the CheckOut Btn
+		this.connectingCheckOutBtn();
+	}
+
+	connectingCheckOutBtn() {
+		document.querySelector('.checkout-drawer').addEventListener('click', () => {
+			console.log(this.cartProducts);
+
+			alert(`Thank you for visiting my demo page. Your order is
+			${this.cartProducts.map(
+				(p) =>
+					` ${p.productName} - quantity ${p.qty} * ${p.price} = ${
+						p.qty * p.price
+					}`
+			)} - Total Price = ${this.totalCartValue}`);
+		});
 	}
 
 	get totalCartValue() {
@@ -165,7 +182,7 @@ class SideCartDrawer {
 						.map((prod) => prod.qty)
 						.reduce((prev, current) => prev + current);
 		document.getElementById('cart-items-counter').textContent = totalQty;
-
+		// This if statements display the checkout btns conditionally, depending on total quantity:
 		if (totalQty >= 1) {
 			document.getElementById('cart-footer').classList.add('show-footer');
 			document.getElementById('initial-message').style.display = 'none';
@@ -203,8 +220,8 @@ class SideCartDrawer {
 		document
 			.getElementById(`cart-${prod.id}`)
 			.querySelector('span').textContent = prod.qty;
-		this.totalInCart();
 		this.totalCartQty();
+		this.totalInCart();
 	};
 
 	addProduct(product) {
@@ -220,6 +237,7 @@ class SideCartDrawer {
 
 		if (cartProduct) {
 			product.qty++;
+			// Adding a new quantity creates a duplicate so I'm removing it by manipulating the DOM
 			document.getElementById(`cart-${product.id}`).remove();
 		} else {
 			product.qty = 1;
@@ -234,7 +252,7 @@ class SideCartDrawer {
 			cartEl.querySelector('p').textContent = `£ ${prod.price}`;
 			cartEl.querySelector('span').textContent = prod.qty;
 		});
-		// Product Btn Handlers and Connectors
+		// Single Product Btn Handlers and Connectors
 		const itemBtns = cartEl.querySelectorAll('button');
 		const deleteItemBtn = itemBtns[0];
 		const lessQtyBtn = itemBtns[1];
@@ -254,8 +272,10 @@ class SideCartDrawer {
 		});
 
 		cartList.append(cartEl);
-		this.totalInCart(product.qty, product.price);
 		this.totalCartQty();
+		//toggles the 'More' btn
+		lessQtyBtn.disabled = product.qty > 1 ? false : true;
+		this.totalInCart(product.qty, product.price);
 	}
 
 	renderCart() {
@@ -277,10 +297,12 @@ class SideCartDrawer {
 class SingleProductRendering {
 	constructor(productDetails) {
 		this.product = productDetails;
+		// Getting access to the single product template template from the HTML
 		this.productElementTemplate = document.getElementById('item-main-template');
 	}
 
 	addProductToCartBtnHandler = () => {
+		// Static method created to enable us to tigger a method from the cart class in the singleproduct class where the action happens
 		App.addProductToCart(this.product);
 	};
 
@@ -325,6 +347,7 @@ class ProductList {
 			products.forEach(
 				(p) => (document.getElementById(p).style.display = 'block')
 			);
+			document.getElementById('remove-filters-btn').style.display = 'none';
 		} else {
 			const filters = userFilters.filter((filter, index) => {
 				return userFilters.indexOf(filter) === index;
@@ -345,134 +368,34 @@ class ProductList {
 		}
 	}
 
+	filtersBtnCreatorHandler(id, filterValues) {
+		document.getElementById(id).addEventListener('click', (event) => {
+			if (filterValues.find((f) => f === event.target.value)) {
+				event.target.classList.remove('filter-btn-active');
+				const btnIndex = filterValues.findIndex((f) => {
+					return f === event.target.value;
+				});
+				filterValues.splice(btnIndex, 1);
+				this.filterCategories(filterValues);
+			} else {
+				filterValues.push(event.target.value);
+				event.target.classList.add('filter-btn-active');
+				this.filterCategories(filterValues);
+				document.getElementById('remove-filters-btn').style.display = 'block';
+			}
+		});
+	}
+
 	connectingFiltersButtons() {
 		let filterValues = [];
-		document
-			.getElementById('berries-btn')
-			.addEventListener('click', (event) => {
-				if (filterValues.find((f) => f === event.target.value)) {
-					event.target.classList.remove('filter-btn-active');
-					const btnIndex = filterValues.findIndex((f) => {
-						return f === event.target.value;
-					});
-					filterValues.splice(btnIndex, 1);
-					this.filterCategories(filterValues);
-				} else {
-					filterValues.push(event.target.value);
-					event.target.classList.add('filter-btn-active');
-					this.filterCategories(filterValues);
-					document.getElementById('remove-filters-btn').style.display = 'block';
-				}
-			});
-		document
-			.getElementById('citrusy-btn')
-			.addEventListener('click', (event) => {
-				if (filterValues.find((f) => f === event.target.value)) {
-					event.target.classList.remove('filter-btn-active');
-					const btnIndex = filterValues.findIndex((f) => {
-						return f === event.target.value;
-					});
-					filterValues.splice(btnIndex, 1);
-					this.filterCategories(filterValues);
-				} else {
-					filterValues.push(event.target.value);
-					event.target.classList.add('filter-btn-active');
-					this.filterCategories(filterValues);
-					document.getElementById('remove-filters-btn').style.display = 'block';
-				}
-			});
-		document
-			.getElementById('classic-btn')
-			.addEventListener('click', (event) => {
-				if (filterValues.find((f) => f === event.target.value)) {
-					event.target.classList.remove('filter-btn-active');
-					const btnIndex = filterValues.findIndex((f) => {
-						return f === event.target.value;
-					});
-					filterValues.splice(btnIndex, 1);
-					this.filterCategories(filterValues);
-				} else {
-					filterValues.push(event.target.value);
-					event.target.classList.add('filter-btn-active');
-					this.filterCategories(filterValues);
-					document.getElementById('remove-filters-btn').style.display = 'block';
-				}
-			});
-		document.getElementById('fancy-btn').addEventListener('click', (event) => {
-			if (filterValues.find((f) => f === event.target.value)) {
-				event.target.classList.remove('filter-btn-active');
-				const btnIndex = filterValues.findIndex((f) => {
-					return f === event.target.value;
-				});
-				filterValues.splice(btnIndex, 1);
-				this.filterCategories(filterValues);
-			} else {
-				filterValues.push(event.target.value);
-				event.target.classList.add('filter-btn-active');
-				this.filterCategories(filterValues);
-				document.getElementById('remove-filters-btn').style.display = 'block';
-			}
-		});
-		document.getElementById('floral-btn').addEventListener('click', (event) => {
-			if (filterValues.find((f) => f === event.target.value)) {
-				event.target.classList.remove('filter-btn-active');
-				const btnIndex = filterValues.findIndex((f) => {
-					return f === event.target.value;
-				});
-				filterValues.splice(btnIndex, 1);
-				this.filterCategories(filterValues);
-			} else {
-				filterValues.push(event.target.value);
-				event.target.classList.add('filter-btn-active');
-				this.filterCategories(filterValues);
-				document.getElementById('remove-filters-btn').style.display = 'block';
-			}
-		});
-		document.getElementById('jazzy-btn').addEventListener('click', (event) => {
-			if (filterValues.find((f) => f === event.target.value)) {
-				event.target.classList.remove('filter-btn-active');
-				const btnIndex = filterValues.findIndex((f) => {
-					return f === event.target.value;
-				});
-				filterValues.splice(btnIndex, 1);
-				this.filterCategories(filterValues);
-			} else {
-				filterValues.push(event.target.value);
-				event.target.classList.add('filter-btn-active');
-				this.filterCategories(filterValues);
-				document.getElementById('remove-filters-btn').style.display = 'block';
-			}
-		});
-		document.getElementById('juicy-btn').addEventListener('click', (event) => {
-			if (filterValues.find((f) => f === event.target.value)) {
-				event.target.classList.remove('filter-btn-active');
-				const btnIndex = filterValues.findIndex((f) => {
-					return f === event.target.value;
-				});
-				filterValues.splice(btnIndex, 1);
-				this.filterCategories(filterValues);
-			} else {
-				filterValues.push(event.target.value);
-				event.target.classList.add('filter-btn-active');
-				this.filterCategories(filterValues);
-				document.getElementById('remove-filters-btn').style.display = 'block';
-			}
-		});
-		document.getElementById('sour-btn').addEventListener('click', (event) => {
-			if (filterValues.find((f) => f === event.target.value)) {
-				event.target.classList.remove('filter-btn-active');
-				const btnIndex = filterValues.findIndex((f) => {
-					return f === event.target.value;
-				});
-				filterValues.splice(btnIndex, 1);
-				this.filterCategories(filterValues);
-			} else {
-				filterValues.push(event.target.value);
-				event.target.classList.add('filter-btn-active');
-				this.filterCategories(filterValues);
-				document.getElementById('remove-filters-btn').style.display = 'block';
-			}
-		});
+		this.filtersBtnCreatorHandler('berries-btn', filterValues);
+		this.filtersBtnCreatorHandler('citrusy-btn', filterValues);
+		this.filtersBtnCreatorHandler('classic-btn', filterValues);
+		this.filtersBtnCreatorHandler('fancy-btn', filterValues);
+		this.filtersBtnCreatorHandler('floral-btn', filterValues);
+		this.filtersBtnCreatorHandler('jazzy-btn', filterValues);
+		this.filtersBtnCreatorHandler('juicy-btn', filterValues);
+		this.filtersBtnCreatorHandler('sour-btn', filterValues);
 		document
 			.getElementById('remove-filters-btn')
 			.addEventListener('click', (event) => {
@@ -514,7 +437,7 @@ class Shop {
 
 		const productList = new ProductList();
 		const productListRendered = productList.render();
-
+		// turning the cartItemDrawer instantiation as a property in shop so I can use it in the app class when I instatiate the shop class
 		this.cartItemDrawer = new SideCartDrawer();
 		const cartDrawer = this.cartItemDrawer.renderCart();
 
@@ -533,6 +456,7 @@ class App {
 	}
 
 	static addProductToCart(product) {
+		// Using this static Method to be able to use it on the single product class
 		this.cartItemDrawer.addProduct(product);
 	}
 }

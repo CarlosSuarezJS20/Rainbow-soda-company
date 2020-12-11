@@ -21,7 +21,6 @@
 		<!-- Script -->
 		<script src="./js/app.js" defer></script>
 	</head>
-
 	<body>
 		<!-- Single Product template -->
 		<template id="item-main-template">
@@ -56,12 +55,15 @@
 				</div>
 			</article>
 		</template>
+		<!-- Navigation Bar Begins -->
 		<header id="home">
 			<nav>
+				<!-- Menu toggle -->
 				<button type="button" class="nav-toggle" id="nav-toggle">
 					<i class="fas fa-bars"></i>
 				</button>
 				<h1 class="header-title">RAINBOW SODAS UK</h1>
+				<!-- Cart Icon toggle -->
 				<button type="button" class="nav-toggle" id="cart-drawer-open">
 					<i class="fas fa-shopping-cart"
 						><span class="cart-items-counter" id="cart-items-counter"
@@ -71,6 +73,7 @@
 				</button>
 			</nav>
 		</header>
+		<!-- Navigation Bar  Ends -->
 		<main>
 			<!-- SideMenu bar -->
 			<div class="side-menu" id="side-menu">
@@ -90,6 +93,7 @@
 					</li>
 				</ul>
 			</div>
+			<!-- SideMenu bar Ends -->
 			<!-- Cart Drawer -->
 			<div class="cart-drawer" id="side-cart">
 				<div class="cart-inner">
@@ -111,6 +115,7 @@
 					<button class="checkout-drawer">checkout</button>
 				</div>
 			</div>
+			<!-- Cart Drawer Ends-->
 			<div class="main-banner">
 				<div class="banner-text">
 					<h1>
@@ -120,11 +125,14 @@
 					</h1>
 				</div>
 			</div>
+			<!-- Shop all button-->
 			<div class="collections">
 				<a href="#products-filter" class="shop-all"
 					>shop all <span><i class="fas fa-arrow-right"></i></span
 				></a>
 			</div>
+			<!-- Shop all button Ends-->
+			<!-- About section begins-->
 			<section class="section-center" id="about">
 				<div class="about-us">
 					<h1>WE THE PEOPLE BEHIND CRAFTED <br />SODAS IN <br />UK</h1>
@@ -137,6 +145,8 @@
 					</p>
 				</div>
 			</section>
+			<!-- About section Ends-->
+			<!-- Filters Section -->
 			<section class="section-center" id="products-filter">
 				<div class="products">
 					<h1>SHOP THE <br />FLAVOURS</h1>
@@ -193,8 +203,11 @@
 					</button>
 				</div>
 			</section>
+			<!-- Filters Section -->
 			<div id="app"></div>
-
+			<!-- 
+	HOOK for all the different items added (Product List);
+ -->
 			<!-- footer -->
 			<footer class="section footer">
 				<!-- footer links -->
@@ -221,7 +234,7 @@
 					<!-- single icon -->
 					<li>
 						<a
-							href="https://www.twitter.com"
+							href="https://www.facebook.com/"
 							target="_blank"
 							class="footer-icon"
 						>
@@ -242,11 +255,7 @@
 					<!-- end of single icon -->
 					<!-- single icon -->
 					<li>
-						<a
-							href="https://www.twitter.com"
-							target="_blank"
-							class="footer-icon"
-						>
+						<a href="https://instagram.com" target="_blank" class="footer-icon">
 							<i class="fab fa-instagram"></i>
 						</a>
 					</li>
