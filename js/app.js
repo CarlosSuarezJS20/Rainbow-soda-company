@@ -318,6 +318,7 @@ class SingleProductRendering {
 
 		const btn = productEl.querySelector('button');
 		btn.addEventListener('click', () => {
+			// SetTimeout allows
 			btn.textContent = 'added!';
 			setTimeout(() => {
 				btn.textContent = 'add to cart';

@@ -87,7 +87,7 @@ nav {
 	margin: 0 1rem;
 	border: transparent;
 	font-size: 2.5rem;
-	color: var(--clr-primary-5);
+	color: var(--clr-primary-1);
 	cursor: pointer;
 	transition: var(--transition);
 	outline: 0;
@@ -104,11 +104,6 @@ nav {
 	padding: 4px;
 	border-radius: var(--radius);
 	outline: 0;
-}
-
-.active-card {
-	color: var(--clr-white);
-	background: green;
 }
 
 .header-title {
@@ -424,6 +419,17 @@ Main Banner
 	margin-top: 10rem;
 }
 
+@media screen and (min-width: 768px) {
+	.banner-text h1 {
+		font-size: 5rem;
+	}
+}
+@media screen and (min-width: 1170px) {
+	.banner-text h1 {
+		font-size: 7rem;
+	}
+}
+
 /* 
 =============== 
 SHOP ALL SECTION 
@@ -442,17 +448,6 @@ SHOP ALL SECTION
 .collections a:hover {
 	color: rgba(83, 83, 83, 0.5);
 	transition: var(--transition);
-}
-
-@media screen and (min-width: 768px) {
-	.banner-text h1 {
-		font-size: 5rem;
-	}
-}
-@media screen and (min-width: 1170px) {
-	.banner-text h1 {
-		font-size: 7rem;
-	}
 }
 
 /* 
@@ -534,6 +529,17 @@ PRODUCTS
 
 .categories-show {
 	height: 400px;
+}
+
+@media screen and (min-width: 768px) {
+	.categories-show {
+		height: 300px;
+	}
+}
+@media screen and (min-width: 1170px) {
+	.categories-show {
+		height: 200px;
+	}
 }
 
 /* 
@@ -621,16 +627,6 @@ FILTERS
 	outline: 0;
 }
 
-@media screen and (min-width: 768px) {
-	.categories-show {
-		height: 300px;
-	}
-}
-@media screen and (min-width: 1170px) {
-	.categories-show {
-		height: 200px;
-	}
-}
 /* 
 =============== 
 PRODUCT
