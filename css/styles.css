@@ -654,11 +654,6 @@ PRODUCT
 	font-weight: 300;
 }
 
-.product-price {
-	font-size: 1.5rem;
-	display: none;
-}
-
 .product-img-container {
 	position: relative;
 }
