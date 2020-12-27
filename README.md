@@ -15,7 +15,7 @@
 
 ## Description
 
-Rainbow Sodas is a project that allows me to understand how an ecommerce could potentially work behind the scenes. Having worked with multiple ecommerce clients during my digital marketing career, I thought it would be interesting how an ecommerce works and how the flow of information is across the different parts works, especially the cart section.
+Rainbow Sodas is a project that allows me to understand how an ecommerce could potentially work behind the scenes. Having worked with multiple ecommerce clients during my digital marketing career, I thought it would be interesting to understand how an ecommerce works and how the flow of information is across the different parts works, especially the cart section.
 
 ### Capabilities
 
