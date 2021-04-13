@@ -1,346 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Rainbow Sodas UK</title>
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      href="./images//favicon.ico"
+      type="image/x-icon"
+    />
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="./fontawesome-free-5.12.1-web/css/all.min.css"
+    />
+    <!-- styles css -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <!-- Script -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
+        products: [
+          {
+            id: 1,
+            productName: "Strawberry Basil",
+            productImgURL:
+              "https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Cherry_Pop_Still_4K_Front-CherryPop.png?v=1588713373",
+            type: ["all", "berries", "citrusy", "fancy"],
+            price: 5.5,
+          },
+          {
+            id: 2,
+            productName: "Sour Blueberry",
+            productImgURL:
+              "https://cdn.shopify.com/s/files/1/0274/3641/7123/products/SourBlueBerry_Still_4K_Front-SourBlueberry.png?v=1588713584",
+            type: ["sour", "berries"],
+            price: 4,
+          },
+          {
+            id: 3,
+            productName: "Blackberry Jam",
+            productImgURL:
+              "https://cdn.shopify.com/s/files/1/0274/3641/7123/products/BlackBerry_Jam_Still_4K_Front-BlackberryJam.png?v=1595035965",
+            type: ["berries"],
+            price: 10,
+          },
+          {
+            id: 4,
+            productName: "Orange Nectarine",
+            productImgURL:
+              "https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Orange_Nectarine_Still_4K_Front-OrangeNectarine.png?v=1588713522",
+            type: ["citrusy", "fancy", "juicy"],
+            price: 6,
+          },
+          {
+            id: 5,
+            productName: "Lemon Verbena",
+            productImgURL:
+              "https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Lemon_Verbena_Still_4K_Front-LemonVerbena.png?v=1588713474",
+            type: ["citrusy", "classic", "floral"],
+            price: 4.5,
+          },
+          {
+            id: 6,
+            productName: "Extra Peach",
+            productImgURL:
+              "https://cdn.shopify.com/s/files/1/0274/3641/7123/products/ExtraPeach_Still_4K_Front-ExtraPeach.png?v=1588713411",
+            type: ["juicy"],
+            price: 8.5,
+          },
+          {
+            id: 7,
+            productName: "Young Mango",
+            productImgURL:
+              "https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Young_Mango_Still_4K_Front-YoungMango.png?v=1588713866",
+            type: ["juicy"],
+            price: 6.5,
+          },
+          {
+            id: 8,
+            productName: "Cherry Pop",
+            productImgURL:
+              "https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Cherry_Pop_Still_4K_Front-CherryPop.png?v=1588713373",
+            type: ["classic"],
+            price: 7.5,
+          },
+          {
+            id: 9,
+            productName: "Pear Elder-Flower",
+            productImgURL:
+              "https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Pear_Elderflower_Still_4K_Front-PearElderflower.png?v=1588713554",
+            type: ["classic", "floral"],
+            price: 8,
+          },
+          {
+            id: 10,
+            productName: "Toasted Coconut",
+            productImgURL:
+              "https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Toasted_Coconut_Still_4K_Front-ToastedCoconut.png?v=1588713760",
+            type: ["fancy"],
+            price: 7,
+          },
+          {
+            id: 11,
+            productName: "White Grape",
+            productImgURL:
+              "https://cdn.shopify.com/s/files/1/0274/3641/7123/products/White_Grape_Still_4K_Front-WhiteGrape.png?v=1588713834",
+            type: ["classic", "jazzy"],
+            price: 5,
+          },
+          {
+            id: 12,
+            productName: "Gingery Ale",
+            productImgURL:
+              "	https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Ginger_Ale_Still_4K_Front-GinergyAle.png?v=1588713442",
+            type: ["classic"],
+            price: 6,
+          },
+        ],
+      });
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-W36RQ22");
+    </script>
+    <!-- End Google Tag Manager -->
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<title>Rainbow Sodas UK</title>
-	<!-- favicon -->
-	<link rel="shortcut icon" href="./images//favicon.ico" type="image/x-icon" />
-	<!-- font-awesome -->
-	<link rel="stylesheet" href="./fontawesome-free-5.12.1-web/css/all.min.css" />
-	<!-- styles css -->
-	<link rel="stylesheet" href="./css/styles.css" />
-	<!-- Script -->
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		dataLayer.push({
-			'products': [
-			{
-				id: 1,
-				productName: "Strawberry Basil",
-				productImgURL:
-				"https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Cherry_Pop_Still_4K_Front-CherryPop.png?v=1588713373",
-				type: ["all", "berries", "citrusy", "fancy"],
-				price: 5.5,
-			},
-			{
-				id: 2,
-				productName: "Sour Blueberry",
-				productImgURL:
-				"https://cdn.shopify.com/s/files/1/0274/3641/7123/products/SourBlueBerry_Still_4K_Front-SourBlueberry.png?v=1588713584",
-				type: ["sour", "berries"],
-				price: 4,
-			},
-			{
-				id: 3,
-				productName: "Blackberry Jam",
-				productImgURL:
-				"https://cdn.shopify.com/s/files/1/0274/3641/7123/products/BlackBerry_Jam_Still_4K_Front-BlackberryJam.png?v=1595035965",
-				type: ["berries"],
-				price: 10,
-			},
-			{
-				id: 4,
-				productName: "Orange Nectarine",
-				productImgURL:
-				"https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Orange_Nectarine_Still_4K_Front-OrangeNectarine.png?v=1588713522",
-				type: ["citrusy", "fancy", "juicy"],
-				price: 6,
-			},
-			{
-				id: 5,
-				productName: "Lemon Verbena",
-				productImgURL:
-				"https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Lemon_Verbena_Still_4K_Front-LemonVerbena.png?v=1588713474",
-				type: ["citrusy", "classic", "floral"],
-				price: 4.5,
-			},
-			{
-				id: 6,
-				productName: "Extra Peach",
-				productImgURL:
-				"https://cdn.shopify.com/s/files/1/0274/3641/7123/products/ExtraPeach_Still_4K_Front-ExtraPeach.png?v=1588713411",
-				type: ["juicy"],
-				price: 8.5,
-			},
-			{
-				id: 7,
-				productName: "Young Mango",
-				productImgURL:
-				"https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Young_Mango_Still_4K_Front-YoungMango.png?v=1588713866",
-				type: ["juicy"],
-				price: 6.5,
-			},
-			{
-				id: 8,
-				productName: "Cherry Pop",
-				productImgURL:
-				"https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Cherry_Pop_Still_4K_Front-CherryPop.png?v=1588713373",
-				type: ["classic"],
-				price: 7.5,
-			},
-			{
-				id: 9,
-				productName: "Pear Elder-Flower",
-				productImgURL:
-				"https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Pear_Elderflower_Still_4K_Front-PearElderflower.png?v=1588713554",
-				type: ["classic", "floral"],
-				price: 8,
-			},
-			{
-				id: 10,
-				productName: "Toasted Coconut",
-				productImgURL:
-				"https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Toasted_Coconut_Still_4K_Front-ToastedCoconut.png?v=1588713760",
-				type: ["fancy"],
-				price: 7,
-			},
-			{
-				id: 11,
-				productName: "White Grape",
-				productImgURL:
-				"https://cdn.shopify.com/s/files/1/0274/3641/7123/products/White_Grape_Still_4K_Front-WhiteGrape.png?v=1588713834",
-				type: ["classic", "jazzy"],
-				price: 5,
-			},
-			{
-				id: 12,
-				productName: "Gingery Ale",
-				productImgURL:
-				"	https://cdn.shopify.com/s/files/1/0274/3641/7123/products/Ginger_Ale_Still_4K_Front-GinergyAle.png?v=1588713442",
-				type: ["classic"],
-				price: 6,
-			},
-			]
-		});
-	</script>
-	<!-- Google Tag Manager -->
-	<script>(function (w, d, s, l, i) {
-			w[l] = w[l] || []; w[l].push({
-				'gtm.start':
-					new Date().getTime(), event: 'gtm.js'
-			}); var f = d.getElementsByTagName(s)[0],
-				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-		})(window, document, 'script', 'dataLayer', 'GTM-W36RQ22');</script>
-	<!-- End Google Tag Manager -->
+    <script src="./js/app.js" defer></script>
+  </head>
 
-	<script src="./js/app.js" defer></script>
-
-<body>
-	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36RQ22" height="0" width="0"
-		style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
-	<!-- Single Product template -->
-	<template id="item-main-template">
-		<article class="single-product">
-			<div class="product-image-container">
-				<img src="" alt="" />
-			</div>
-			<div class="product-title">
-				<h2></h2>
-			</div>
-			<div class="cart-btn-holder">
-				<button class="add-to-cart-btn" id="add-to-cart">add to cart</button>
-			</div>
-		</article>
-	</template>
-	<!-- Cart Item Template -->
-	<template id="item-cart-template">
-		<article class="cart-item">
-			<div class="side-cart-product-item">
-				<h3></h3>
-				<button class="trash-icon" id="delete-btn">
-					<i class="far fa-trash-alt"></i>
-				</button>
-			</div>
-			<div class="side-cart-product-price">
-				<p></p>
-				<div>
-					<button class="qty-btn" disabled>-</button>
-					<span>0</span>
-					<button class="qty-btn">+</button>
-				</div>
-			</div>
-		</article>
-	</template>
-	<!-- Navigation Bar Begins -->
-	<header id="home">
-		<nav>
-			<!-- Menu toggle -->
-			<button type="button" class="nav-toggle" id="nav-toggle">
-				<i class="fas fa-bars"></i>
-			</button>
-			<h1 class="header-title">RAINBOW SODAS UK</h1>
-			<!-- Cart Icon toggle -->
-			<button type="button" class="nav-toggle" id="cart-drawer-open">
-				<i class="fas fa-shopping-cart"><span class="cart-items-counter" id="cart-items-counter">0</span></i>
-			</button>
-		</nav>
-	</header>
-	<!-- Navigation Bar  Ends -->
-	<main>
-		<!-- SideMenu bar -->
-		<div class="side-menu" id="side-menu">
-			<button type="button" id="drawer-close" class="drawer-menu-close">
-				<i class="far fa-window-close"></i>
-			</button>
-			<div class="drawer-title">SODAS UK</div>
-			<ul class="nav-links">
-				<li>
-					<a href="#products-filter" class="nav-link">shop all</a>
-				</li>
-				<li>
-					<a href="#products-filter" class="nav-link">products</a>
-				</li>
-				<li>
-					<a href="#about" class="nav-link">about us</a>
-				</li>
-			</ul>
-		</div>
-		<!-- SideMenu bar Ends -->
-		<!-- Cart Drawer -->
-		<div class="cart-drawer" id="side-cart">
-			<div class="cart-inner">
-				<button type="button" id="cart-drawer-close" class="cart-drawer-close">
-					<i class="far fa-window-close"></i>
-				</button>
-				<div class="cart-drawer-title">CART</div>
-				<div id="cart-items-hook"></div>
-			</div>
-			<div class="cart-footer" id="cart-footer">
-				<div class="total-display-side-cart">
-					<h3>total</h3>
-					<span id="total-cart">0</span>
-				</div>
-				<button class="checkout-drawer">checkout</button>
-			</div>
-		</div>
-		<!-- Cart Drawer Ends-->
-		<div class="main-banner">
-			<div class="banner-text">
-				<h1>
-					Welcome to <br /><strong>the rainbow <br />uk <br />sodas company
-					</strong>
-				</h1>
-			</div>
-		</div>
-		<!-- Shop all button-->
-		<div class="collections">
-			<a href="#products-filter" class="shop-all">shop all <span><i class="fas fa-arrow-right"></i></span></a>
-		</div>
-		<!-- Shop all button Ends-->
-		<!-- About section begins-->
-		<section class="section-center" id="about">
-			<div class="about-us">
-				<h1>WE THE PEOPLE BEHIND CRAFTED <br />SODAS IN <br />UK</h1>
-				<p>
-					In order for a more perfect beverage, establish variety, insure
-					palatable tranquility, provide for the extraordinary taste, promote
-					the general refreshment and secure the blessings of flavor to
-					ourselves and our posterity do ordain and establish this soda
-					company for the people of UK.
-				</p>
-			</div>
-		</section>
-		<!-- About section Ends-->
-		<!-- Filters Section -->
-		<section class="section-center" id="products-filter">
-			<div class="products">
-				<h1>SHOP THE <br />FLAVOURS</h1>
-			</div>
-			<button class="toggle-filter" id="toggle-category-filters">
-				filter
-				<span id="filter-btn-span"><i class="far fa-minus-square"></i></span>
-			</button>
-			<a class="remove-filters" id="remove-filters-btn">x remove filters</a>
-			<div class="categories-holder" id="categories-holder">
-				<button class="filter-btn" type="button" value="berries" id="berries-btn">
-					berries
-				</button>
-				<button class="filter-btn" type="button" value="citrusy" id="citrusy-btn">
-					citrusy
-				</button>
-				<button class="filter-btn" type="button" value="classic" id="classic-btn">
-					classic
-				</button>
-				<button class="filter-btn" type="button" value="fancy" id="fancy-btn">
-					fancy
-				</button>
-				<button class="filter-btn" type="button" value="floral" id="floral-btn">
-					floral
-				</button>
-				<button class="filter-btn" type="button" value="jazzy" id="jazzy-btn">
-					jazzy
-				</button>
-				<button class="filter-btn" type="button" value="juicy" id="juicy-btn">
-					juicy
-				</button>
-				<button class="filter-btn" type="button" value="sour" id="sour-btn">
-					sour
-				</button>
-			</div>
-		</section>
-		<!-- Filters Section -->
-		<div id="app"></div>
-		<!-- 
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-W36RQ22"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- Single Product template -->
+    <template id="item-main-template">
+      <article class="single-product">
+        <div class="product-image-container">
+          <img src="" alt="" />
+        </div>
+        <div class="product-title">
+          <h2></h2>
+        </div>
+        <div class="cart-btn-holder">
+          <button class="add-to-cart-btn" id="add-to-cart">add to cart</button>
+        </div>
+      </article>
+    </template>
+    <!-- Cart Item Template -->
+    <template id="item-cart-template">
+      <article class="cart-item">
+        <div class="side-cart-product-item">
+          <h3></h3>
+          <button class="trash-icon" id="delete-btn">
+            <i class="far fa-trash-alt"></i>
+          </button>
+        </div>
+        <div class="side-cart-product-price">
+          <p></p>
+          <div>
+            <button class="qty-btn" disabled>-</button>
+            <span>0</span>
+            <button class="qty-btn">+</button>
+          </div>
+        </div>
+      </article>
+    </template>
+    <!-- Navigation Bar Begins -->
+    <header id="home">
+      <nav>
+        <!-- Menu toggle -->
+        <button type="button" class="nav-toggle" id="nav-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <h1 class="header-title">RAINBOW SODAS UK</h1>
+        <!-- Cart Icon toggle -->
+        <button type="button" class="nav-toggle" id="cart-drawer-open">
+          <i class="fas fa-shopping-cart"
+            ><span class="cart-items-counter" id="cart-items-counter"
+              >0</span
+            ></i
+          >
+        </button>
+      </nav>
+    </header>
+    <!-- Navigation Bar  Ends -->
+    <main>
+      <!-- SideMenu bar -->
+      <div class="side-menu" id="side-menu">
+        <button type="button" id="drawer-close" class="drawer-menu-close">
+          <i class="far fa-window-close"></i>
+        </button>
+        <div class="drawer-title">SODAS UK</div>
+        <ul class="nav-links">
+          <li>
+            <a href="#products-filter" class="nav-link">shop all</a>
+          </li>
+          <li>
+            <a href="#products-filter" class="nav-link">products</a>
+          </li>
+          <li>
+            <a href="#about" class="nav-link">about us</a>
+          </li>
+        </ul>
+      </div>
+      <!-- SideMenu bar Ends -->
+      <!-- Cart Drawer -->
+      <div class="cart-drawer" id="side-cart">
+        <div class="cart-inner">
+          <button
+            type="button"
+            id="cart-drawer-close"
+            class="cart-drawer-close"
+          >
+            <i class="far fa-window-close"></i>
+          </button>
+          <div class="cart-drawer-title">CART</div>
+          <div id="cart-items-hook"></div>
+        </div>
+        <div class="cart-footer" id="cart-footer">
+          <div class="total-display-side-cart">
+            <h3>total</h3>
+            <span id="total-cart">0</span>
+          </div>
+          <button class="checkout-drawer">checkout</button>
+        </div>
+      </div>
+      <!-- Cart Drawer Ends-->
+      <div class="main-banner">
+        <div class="banner-text">
+          <h1>
+            Welcome to <br /><strong
+              >the rainbow <br />uk <br />sodas company
+            </strong>
+          </h1>
+        </div>
+      </div>
+      <!-- Shop all button-->
+      <div class="collections">
+        <a href="#products-filter" class="shop-all"
+          >shop all <span><i class="fas fa-arrow-right"></i></span
+        ></a>
+      </div>
+      <!-- Shop all button Ends-->
+      <!-- About section begins-->
+      <section class="section-center" id="about">
+        <div class="about-us">
+          <h1>WE THE PEOPLE BEHIND CRAFTED <br />SODAS IN <br />UK</h1>
+          <p>
+            In order for a more perfect beverage, establish variety, insure
+            palatable tranquility, provide for the extraordinary taste, promote
+            the general refreshment and secure the blessings of flavor to
+            ourselves and our posterity do ordain and establish this soda
+            company for the people of UK.
+          </p>
+        </div>
+      </section>
+      <!-- About section Ends-->
+      <!-- Filters Section -->
+      <section class="section-center" id="products-filter">
+        <div class="products">
+          <h1>SHOP THE <br />FLAVOURS</h1>
+        </div>
+        <button class="toggle-filter" id="toggle-category-filters">
+          filter
+          <span id="filter-btn-span"><i class="far fa-minus-square"></i></span>
+        </button>
+        <a class="remove-filters" id="remove-filters-btn">x remove filters</a>
+        <div class="categories-holder" id="categories-holder">
+          <button
+            class="filter-btn"
+            type="button"
+            value="berries"
+            id="berries-btn"
+          >
+            berries
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            value="citrusy"
+            id="citrusy-btn"
+          >
+            citrusy
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            value="classic"
+            id="classic-btn"
+          >
+            classic
+          </button>
+          <button class="filter-btn" type="button" value="fancy" id="fancy-btn">
+            fancy
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            value="floral"
+            id="floral-btn"
+          >
+            floral
+          </button>
+          <button class="filter-btn" type="button" value="jazzy" id="jazzy-btn">
+            jazzy
+          </button>
+          <button class="filter-btn" type="button" value="juicy" id="juicy-btn">
+            juicy
+          </button>
+          <button class="filter-btn" type="button" value="sour" id="sour-btn">
+            sour
+          </button>
+        </div>
+      </section>
+      <!-- Filters Section -->
+      <div id="app"></div>
+      <!-- 
 	HOOK for all the different items added (Product List);
  -->
-		<!-- footer -->
-		<footer class="footer">
-			<!-- footer links -->
-			<ul class="footer-links">
-				<!-- single link -->
-				<li>
-					<a href="#" class="footer-link">home</a>
-				</li>
-				<!-- end of single link -->
-				<!-- single link -->
-				<li>
-					<a href="#about" class="footer-link">about</a>
-				</li>
-				<!-- end of single link -->
-				<!-- single link -->
-				<li>
-					<a href="#products-filter" class="footer-link">products</a>
-				</li>
-				<!-- end of single link -->
-			</ul>
-			<!-- end of footer links -->
-			<!-- footer icons -->
-			<ul class="footer-icons">
-				<!-- single icon -->
-				<li>
-					<a href="https://www.facebook.com/" target="_blank" class="footer-icon">
-						<i class="fab fa-facebook"></i>
-					</a>
-				</li>
-				<!-- end of single icon -->
-				<!-- single icon -->
-				<li>
-					<a href="https://www.twitter.com" target="_blank" class="footer-icon">
-						<i class="fab fa-twitter"></i>
-					</a>
-				</li>
-				<!-- end of single icon -->
-				<!-- single icon -->
-				<li>
-					<a href="https://instagram.com" target="_blank" class="footer-icon">
-						<i class="fab fa-instagram"></i>
-					</a>
-				</li>
-				<!-- end of single icon -->
-			</ul>
-			<!-- end of footer icons -->
-			<p class="copyright">
-				copyright &copy; carlos suarez <span id="date"></span>. all rights
-				reserved
-			</p>
-		</footer>
-	</main>
-</body>
-
+      <!-- footer -->
+      <footer class="footer">
+        <!-- footer links -->
+        <ul class="footer-links">
+          <!-- single link -->
+          <li>
+            <a href="#" class="footer-link">home</a>
+          </li>
+          <!-- end of single link -->
+          <!-- single link -->
+          <li>
+            <a href="#about" class="footer-link">about</a>
+          </li>
+          <!-- end of single link -->
+          <!-- single link -->
+          <li>
+            <a href="#products-filter" class="footer-link">products</a>
+          </li>
+          <!-- end of single link -->
+        </ul>
+        <!-- end of footer links -->
+        <!-- footer icons -->
+        <ul class="footer-icons">
+          <!-- single icon -->
+          <li>
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              class="footer-icon"
+            >
+              <i class="fab fa-facebook"></i>
+            </a>
+          </li>
+          <!-- end of single icon -->
+          <!-- single icon -->
+          <li>
+            <a
+              href="https://www.twitter.com"
+              target="_blank"
+              class="footer-icon"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <!-- end of single icon -->
+          <!-- single icon -->
+          <li>
+            <a href="https://instagram.com" target="_blank" class="footer-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+          <!-- end of single icon -->
+        </ul>
+        <!-- end of footer icons -->
+        <p class="copyright">
+          copyright &copy; carlos suarez <span id="date"></span>. all rights
+          reserved
+        </p>
+      </footer>
+    </main>
+  </body>
 </html>

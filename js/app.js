@@ -162,7 +162,8 @@ class SideCartDrawer {
             p.qty * p.price
           }`
       )} - Total Price = ${this.totalCartValue}`);
-      window.dataLayer.push({ order_Value: this.totalCartValue });
+      // dataLayer for GTM
+      window.dataLayer.push({ order_Value: this.totalCartValue.toString() });
     });
   }
 
