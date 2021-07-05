@@ -1,8 +1,7 @@
 // ********** set date ************
 // select span
-const date = (document.getElementById(
-  "date"
-).innerHTML = new Date().getFullYear());
+const date = (document.getElementById("date").innerHTML =
+  new Date().getFullYear());
 
 // ********** nav toggle ************
 // select button and links
@@ -142,7 +141,6 @@ const products = [
     price: 6,
   },
 ];
-
 class SideCartDrawer {
   cartProducts = [];
 
@@ -222,6 +220,8 @@ class SideCartDrawer {
       .querySelector("span").textContent = prod.qty;
     this.totalCartQty();
     this.totalInCart();
+
+    // for datalayer:
   };
 
   addProduct(product) {
@@ -463,3 +463,247 @@ class App {
 }
 
 App.init();
+
+// CLOSURES
+
+console.log("CLOSURES");
+
+const num = 3;
+
+function multiplyBy2(input) {
+  const result = input * 2;
+  return result;
+}
+
+const output = multiplyBy2(num);
+
+const newOutput = multiplyBy2(10);
+
+// No relation, no connection between
+
+function createFunction() {
+  function multiplyByTwo(num) {
+    return num * 2;
+  }
+  return multiplyByTwo;
+}
+
+// createFunction = label
+// whatever is inside the function = function definition
+
+const secondLabel = createFunction;
+
+const generatedFunc = createFunction();
+
+const result = generatedFunc(6);
+
+console.log(result);
+
+console.log("SECOND EXAMPLE");
+
+// Closures
+
+//
+
+// We are declaring a function with a function definition. Javascript
+// does not go inside a function until it gets called.
+
+// This is available in our global scope and it is available everywhere
+
+function outer() {
+  // create a variable with a label counter and assign a value
+  // of type number =  0
+  let counter = 0;
+  // store a new function with function definition incrementCounter
+  function incrementCounter() {
+    //return the variable + 1;
+    console.log(counter++);
+  }
+  // returns the function definition of incrementCounter
+  return incrementCounter;
+}
+
+// We are declaring another function called myNew...
+// and we are assigning the execution of outer().
+
+const myNewFunction = outer();
+// when you call a function you create a new EXECUTION CONTEXT (Local Memory)
+// the return of incrementCounter is stored in the const myNewFunction
+// This declaration not only brings the function definition, I bring everything
+// the surrounding local memory attached to the function
+// HOWEVER ONLY WHAT IT IS MENTIONED OR NEEDED WILL BE STORED
+
+// Call Stack is where in the script we are at the moment. After this is finished
+// then garbage collector deletes it
+
+myNewFunction();
+// we are calling the definition of incrementCounter.
+myNewFunction();
+myNewFunction();
+myNewFunction();
+
+// variable environment is also referred as local scope
+// The backpack is data that Persistent lexical scope referenced data
+
+function listOfNames() {
+  let listOfNamesStorage = [];
+  function addNameToList(name) {
+    listOfNamesStorage.push(name);
+    console.log(listOfNamesStorage);
+  }
+  return addNameToList;
+}
+
+const myNewAddNameToListFunc = listOfNames();
+
+myNewAddNameToListFunc("carlos");
+myNewAddNameToListFunc("Sabina");
+myNewAddNameToListFunc("Alberto");
+
+const myNewAddNameToListFunc2 = listOfNames();
+myNewAddNameToListFunc2("Andres");
+myNewAddNameToListFunc2("David");
+myNewAddNameToListFunc2("Orlando");
+
+// Creating objects to avoid using extra memory
+
+const userObjectFunctions = {
+  increment: function () {
+    this.score++;
+  },
+  login: function () {
+    console.log(`${this.name} is here`);
+  },
+};
+
+function userCreation(name, score) {
+  const userObj = Object.create(userObjectFunctions);
+  userObj.name = name;
+  userObj.score = score;
+
+  return userObj;
+}
+
+const user1 = userCreation("Carlos", 10);
+
+user1.increment();
+user1.increment();
+user1.increment();
+user1.increment();
+user1.increment();
+console.log(user1);
+user1.login("Carlos");
+
+// for (var i = 0; i < 3; i++) {
+//   setTimeout(function () {
+//     alert(i);
+//   }, 1000 + i);
+// }
+
+const greetingType = "helloWorld";
+
+class Greetings {
+  static greetingType() {
+    return "Hello, World!";
+  }
+}
+
+console.log(Greetings.greetingType());
+
+console.log("-----------------------");
+console.log("-----------------------");
+
+class Rectangle {
+  constructor(width, height) {
+    this.width = width;
+    this.height = height;
+  }
+
+  setWidth(width) {
+    this.width = width;
+  }
+
+  setHeight(height) {
+    this.height = height;
+  }
+
+  area() {
+    return this.width * this.height;
+  }
+}
+
+class Square extends Rectangle {
+  constructor(width, height) {
+    super();
+    this.width = width;
+    this.height = height;
+  }
+
+  setWidth(width) {
+    this.width = width;
+  }
+
+  setHeight(height) {
+    this.height = height;
+  }
+}
+
+function increaseRectangleWidth(rectangle) {
+  rectangle.setWidth(rectangle.width + 1);
+}
+
+const rectangle1 = new Rectangle(10, 2);
+const square = new Square(5, 5);
+
+increaseRectangleWidth(rectangle1);
+increaseRectangleWidth(square);
+
+console.log(rectangle1.area());
+console.log(square.area());
+
+console.log("-----------------------");
+console.log("-----------------------");
+// Interface Segregation
+
+class Entity {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+const mover = {
+  move() {
+    console.log(`${this.name} moved`);
+  },
+};
+
+const attacker = {
+  attack(targetEntity) {
+    console.log(
+      `${this.name} attacked ${targetEntity.name} for ${this.attackDamage} damage`
+    );
+    targetEntity.takeDamage(this.attackDamage);
+  },
+};
+
+const hasHealth = {
+  takeDamage(amount) {
+    this.health -= amount;
+    console.log(`${this.name} has ${this.health} health remaining`);
+  },
+};
+
+class Character extends Entity {
+  constructor(name, attackDamage, health) {
+    super(name);
+    this.attackDamage = attackDamage;
+    this.health = health;
+  }
+}
+
+Object.assign(Character.prototype, mover);
+Object.assign(Character.prototype, attacker);
+Object.assign(Character.prototype, hasHealth);
+
+const character = new Character("Carlos", 3, 100);
+character.move();
